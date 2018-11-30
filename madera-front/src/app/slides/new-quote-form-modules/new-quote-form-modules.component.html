@@ -1,0 +1,48 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Choix des modules</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <form #newQuoteFormModules="ngForm" (submit)="onSubmit($event)">
+      <ion-item lines="inset">
+        <ion-label position="floating" color="primary">Modules sélectionnés</ion-label>
+        <ng-container *ngIf="quote.modules; then showSelectedModules"></ng-container>
+        <ng-template #showSelectedModules>
+          <ng-container *ngFor="let module of modules">
+            <ion-card *ngIf="quote.modules.includes(module)" (click)="removeModule(module.id)">
+              <ion-card-header>
+                <ion-card-title>{{module.name}}</ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ng-container>
+        </ng-template>
+      </ion-item>
+      <ion-item lines="inset">
+        <ion-label position="floating" color="primary">Modules disponibles</ion-label>
+        <ng-container *ngIf="quote.modules; then showUnselectedModules else showEveryModule"></ng-container>
+        <ng-template #showUnselectedModules>
+          <ng-container *ngFor="let module of modules">
+            <ion-card *ngIf="!quote.modules.includes(module)" (click)="addModule(module.id)">
+              <ion-card-header>
+                <ion-card-title>{{module.name}}</ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ng-container>
+        </ng-template>
+        <ng-template #showEveryModule>
+          <ng-container *ngFor="let module of modules">
+            <ion-card (click)="addModule(module.id)">
+              <ion-card-header>
+                <ion-card-title>{{module.name}}</ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ng-container>
+        </ng-template>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-button slot="start" type="button" fill="clear" (click)="changeSlide.emit(false)">RETOUR</ion-button>
+        <ion-button slot="end" type="submit" fill="clear">CONTINUER</ion-button>
+      </ion-item>
+    </form>
+  </ion-card-content>
+</ion-card>

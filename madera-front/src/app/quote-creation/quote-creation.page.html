@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>CONCEPTION DE DEVIS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding-top>
+  <ion-slides pager=false [options]="sliderOptions">
+    <ion-slide>
+      <new-quote-form-base [quote]="quote" (changeSlide)="changeSlide($event)"></new-quote-form-base>
+    </ion-slide>
+    <ion-slide>
+      <new-quote-form-range [quote]="quote" (changeSlide)="changeSlide($event)"></new-quote-form-range>
+    </ion-slide>
+    <ion-slide>
+      <new-quote-form-modules [quote]="quote" (changeSlide)="changeSlide($event)"></new-quote-form-modules>
+    </ion-slide>
+    <ion-slide>
+      <new-quote-form-summary [quote]="quote" (changeSlide)="changeSlide($event)"></new-quote-form-summary>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

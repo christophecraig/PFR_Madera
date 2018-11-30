@@ -1,0 +1,30 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Créer un devis</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <form #newQuoteForm="ngForm" (submit)="onSubmit($event)">
+      <ion-item lines="inset">
+        <ion-label position="floating" color="primary">Nom du projet</ion-label>
+        <ion-input type="text" name="name" [(ngModel)]="quote.name" text required></ion-input>
+      </ion-item>
+      <ion-item lines="inset">
+        <ion-label position="floating" color="primary">Reference</ion-label>
+        <ion-input type="text" name="reference" [(ngModel)]="quote.reference" text required></ion-input>
+      </ion-item>
+      <ion-item lines="inset">
+        <ion-label position="floating" color="primary">Client</ion-label>
+        <ion-select name="idCustomer" text required (ionChange)="onCustomerSelect($event)">
+          <ion-select-option *ngFor="let customer of customers" value="{{customer.id}}">{{customer.firstName}} {{customer.lastName}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item lines="inset">
+        <ion-label position="floating" color="primary">Date du projet</ion-label>
+        <ion-datetime display-format="DD/MM/YYYY" picker-format="DD/MM/YYYY" name="date" [(ngModel)]="quote.date" date required></ion-datetime>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-button slot="end" type="submit" fill="clear" [disabled]="!newQuoteForm.valid">CONTINUER</ion-button>
+      </ion-item>
+    </form>
+  </ion-card-content>
+</ion-card>

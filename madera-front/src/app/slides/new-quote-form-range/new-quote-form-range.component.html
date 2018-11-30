@@ -1,0 +1,29 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Choix de la gamme</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <form #newQuoteFormRange="ngForm" (submit)="onSubmit($event)">
+      <ion-item lines="inset">
+        <ion-label position="floating" color="primary">Gamme</ion-label>
+        <ion-select name="idRange" text required (ionChange)="onRangeSelect($event)">
+          <ion-select-option *ngFor="let range of ranges" value="{{range.id}}">{{range.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ng-container *ngIf="quote.range && quote.range.models; then showRangeModels"></ng-container>
+      <ng-template #showRangeModels>
+        <ion-item lines="inset">
+          <ion-label position="floating" color="primary">Modèle de la gamme</ion-label>
+          <ion-select name="idModel" value="0" text (ionChange)="onModelSelect($event)" required>
+            <ion-select-option value="0">Aucun modèle</ion-select-option>
+            <ion-select-option *ngFor="let model of quote.range.models" value="{{model.id}}">{{model.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ng-template>
+      <ion-item lines="none">
+        <ion-button slot="start" type="button" fill="clear" (click)="changeSlide.emit(false)">RETOUR</ion-button>
+        <ion-button slot="end" type="submit" fill="clear" [disabled]="!newQuoteFormRange.valid">CONTINUER</ion-button>
+      </ion-item>
+    </form>
+  </ion-card-content>
+</ion-card>

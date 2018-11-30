@@ -1,0 +1,7 @@
+{
+  "appId": "com.com_madera.maderapp",
+  "appName": "MaderApp",
+  "bundledWebRuntime": false,
+  "webDir": "www",
+  "windowsAndroidStudioPath": "D:\\Logiciels\\Android\\Studio\\bin\\studio64.exe"
+}

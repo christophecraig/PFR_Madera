@@ -1,0 +1,16 @@
+ion-chip {
+    padding-left: 10px;
+    padding-right: 2px;
+}
+
+ion-chip:not(:last-child) {
+    margin-right: 5px;
+}
+
+ion-chip:first-child {
+    margin-left: 10px;
+}
+
+ion-slide > * {
+    width: 95%;
+}

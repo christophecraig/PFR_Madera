@@ -1,0 +1,184 @@
+<ion-card *ngIf="quote && quote.name && quote.reference">
+  <ion-card-header>
+    <ion-card-title>Résumé</ion-card-title>
+    <ion-card-subtitle>{{quote.name}} - {{quote.reference}}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-card *ngIf="quote.date">
+      <ion-card-header>
+        <ion-card-subtitle>Informations</ion-card-subtitle>
+        <ion-card-title>Date : {{quote.date | date:'dd/MM/yyyy'}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+    <ion-card *ngIf="quote.customer">
+      <ion-card-header>
+        <ion-card-subtitle>Client</ion-card-subtitle>
+        <ion-card-title>{{quote.customer.firstName}} {{quote.customer.lastName}} - {{quote.customer.reference}}</ion-card-title>
+        <ion-card-subtitle>{{quote.customer.address}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+    <ion-card *ngIf="quote.range">
+      <ion-card-header>
+        <ion-card-subtitle>Gamme</ion-card-subtitle>
+        <ion-card-title>{{quote.range.name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-card *ngIf="quote.range.insulation">
+          <ion-card-header>
+            <ion-card-subtitle>Isolant</ion-card-subtitle>
+            <ion-card-title>{{quote.range.insulation.name}}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+        <ion-card *ngIf="quote.range.cover">
+          <ion-card-header>
+            <ion-card-subtitle>Couverture</ion-card-subtitle>
+            <ion-card-title>{{quote.range.cover.name}}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+        <ion-card *ngIf="quote.range.woodFrame">
+          <ion-card-header>
+            <ion-card-subtitle>Ossature</ion-card-subtitle>
+            <ion-card-title>{{quote.range.woodFrame.name}}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+        <ion-card *ngIf="quote.range.frame">
+          <ion-card-header>
+            <ion-card-subtitle>Huisserie</ion-card-subtitle>
+            <ion-card-title>{{quote.range.frame.name}}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="quote.modules">
+      <ion-card-header>
+        <ion-card-subtitle>Modules</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ng-container *ngFor="let module of quote.modules">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>{{module.name}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-card *ngIf="module.cuts">
+                <ion-card-header>
+                  <ion-card-subtitle>Coupes</ion-card-subtitle>
+                </ion-card-header>
+                <ion-card-content>
+                  <ng-container *ngFor="let cut of module.cuts">
+                    <ion-card>
+                      <ion-card-header>
+                        <ion-card-title>{{cut.name}}</ion-card-title>
+                      </ion-card-header>
+                    </ion-card>
+                  </ng-container>
+                </ion-card-content>
+              </ion-card>
+              <ion-card *ngIf="module.nature">
+                <ion-card-header>
+                  <ion-card-subtitle>Nature</ion-card-subtitle>
+                  <ion-card-title>{{module.nature.name}}</ion-card-title>
+                </ion-card-header>
+              </ion-card>
+              <ion-card *ngIf="module.components">
+                <ion-card-header>
+                  <ion-card-subtitle>Composants</ion-card-subtitle>
+                </ion-card-header>
+                <ion-card-content>
+                  <ng-container *ngFor="let component of module.components">
+                    <ion-card>
+                      <ion-card-header>
+                        <ion-card-title>{{component.name}}</ion-card-title>
+                      </ion-card-header>
+                      <ion-card-content>
+                        <ion-card *ngIf="component.nature">
+                          <ion-card-header>
+                            <ion-card-subtitle>Nature</ion-card-subtitle>
+                            <ion-card-title>{{component.nature.name}}</ion-card-title>
+                          </ion-card-header>
+                        </ion-card>
+                        <ion-card *ngIf="component.componentType">
+                          <ion-card-header>
+                            <ion-card-subtitle>Type</ion-card-subtitle>
+                            <ion-card-title>{{component.componentType.name}}</ion-card-title>
+                          </ion-card-header>
+                        </ion-card>
+                        <ion-card *ngIf="component.technicalClause">
+                          <ion-card-header>
+                            <ion-card-subtitle>Contrainte</ion-card-subtitle>
+                            <ion-card-title>{{component.technicalClause.name}}</ion-card-title>
+                          </ion-card-header>
+                        </ion-card>
+                        <ion-card *ngIf="component.specifications">
+                          <ion-card-header>
+                            <ion-card-subtitle>Spécifications</ion-card-subtitle>
+                          </ion-card-header>
+                          <ion-card-content>
+                            <ng-container *ngFor="let specification of component.specifications">
+                              <ion-card>
+                                <ion-card-header>
+                                  <ion-card-title>{{specification.name}}</ion-card-title>
+                                  <ion-card-subtitle>{{specification.value}}</ion-card-subtitle>
+                                </ion-card-header>
+                              </ion-card>
+                            </ng-container>
+                          </ion-card-content>
+                        </ion-card>
+                        <ion-card *ngIf="component.units">
+                          <ion-card-header>
+                            <ion-card-subtitle>Unités</ion-card-subtitle>
+                          </ion-card-header>
+                          <ion-card-content>
+                            <ng-container *ngFor="let unit of component.units">
+                              <ion-card>
+                                <ion-card-header>
+                                  <ion-card-title>{{unit.name}}</ion-card-title>
+                                </ion-card-header>
+                              </ion-card>
+                            </ng-container>
+                          </ion-card-content>
+                        </ion-card>
+                      </ion-card-content>
+                    </ion-card>
+                  </ng-container>
+                </ion-card-content>
+              </ion-card>
+              <ion-card *ngIf="module.specifications">
+                <ion-card-header>
+                  <ion-card-subtitle>Spécifications</ion-card-subtitle>
+                </ion-card-header>
+                <ion-card-content>
+                  <ng-container *ngFor="let specification of module.specifications">
+                    <ion-card>
+                      <ion-card-header>
+                        <ion-card-title>{{specification.name}}</ion-card-title>
+                        <ion-card-subtitle>{{specification.value}}</ion-card-subtitle>
+                      </ion-card-header>
+                    </ion-card>
+                  </ng-container>
+                </ion-card-content>
+              </ion-card>
+              <ion-card *ngIf="module.units">
+                <ion-card-header>
+                  <ion-card-subtitle>Unités</ion-card-subtitle>
+                </ion-card-header>
+                <ion-card-content>
+                  <ng-container *ngFor="let unit of module.units">
+                    <ion-card>
+                      <ion-card-header>
+                        <ion-card-title>{{unit.name}}</ion-card-title>
+                      </ion-card-header>
+                    </ion-card>
+                  </ng-container>
+                </ion-card-content>
+              </ion-card>
+            </ion-card-content>
+          </ion-card>
+        </ng-container>
+      </ion-card-content>
+    </ion-card>
+    <ion-item lines="none">
+      <ion-button slot="start" type="button" fill="clear" (click)="changeSlide.emit(false)">RETOUR</ion-button>
+    </ion-item>
+  </ion-card-content>
+</ion-card>
