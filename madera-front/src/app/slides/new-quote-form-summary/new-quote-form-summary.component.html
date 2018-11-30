@@ -55,7 +55,7 @@
       </ion-card-header>
       <ion-card-content>
         <ng-container *ngFor="let module of quote.modules">
-          <ion-card>
+          <ion-card class="module">
             <ion-card-header>
               <ion-card-title>{{module.name}}</ion-card-title>
             </ion-card-header>
@@ -86,8 +86,8 @@
                 </ion-card-header>
                 <ion-card-content>
                   <ng-container *ngFor="let component of module.components">
-                    <ion-card>
-                      <ion-card-header>
+                    <ion-card class="component">
+                      <ion-card-header class="component-header">
                         <ion-card-title>{{component.name}}</ion-card-title>
                       </ion-card-header>
                       <ion-card-content>
@@ -115,7 +115,7 @@
                           </ion-card-header>
                           <ion-card-content>
                             <ng-container *ngFor="let specification of component.specifications">
-                              <ion-card>
+                              <ion-card class="specification">
                                 <ion-card-header>
                                   <ion-card-title>{{specification.name}}</ion-card-title>
                                   <ion-card-subtitle>{{specification.value}}</ion-card-subtitle>

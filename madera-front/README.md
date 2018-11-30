@@ -1,6 +1,6 @@
 # Installation
 `npm install -g ionic`
-
+`npm install`
 # Utilisation
 S'assurer que le back-end est lancé puis `npm start`
 
