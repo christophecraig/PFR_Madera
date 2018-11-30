@@ -18,133 +18,141 @@ import { TechnicalClause } from "../models/TechnicalClause";
 const insulations: Insulation[] = [
     {
         id: 1,
-        name: "Insulation 1"
+        name: "Synthétique"
     },
     {
         id: 2,
-        name: "Insulation 2"
+        name: "Naturel"
     },
     {
         id: 3,
-        name: "Insulation 3"
+        name: "Biologique"
     },
     {
         id: 4,
-        name: "Insulation 4"
+        name: "Bois"
     }
 ]
 
 const covers: Cover[] = [
     {
         id: 1,
-        name: "Cover 1"
+        name: "Tuiles"
     },
     {
         id: 2,
-        name: "Cover 2"
+        name: "Ardoises"
     },
     {
         id: 3,
-        name: "Cover 3"
+        name: "Briques"
     },
     {
         id: 4,
-        name: "Cover 4"
+        name: "Fibre"
     }
 ]
 
 const woodFrames: WoodFrame[] = [
     {
         id: 1,
-        name: "Wood Frame 1"
+        name: "Ossature bois simple"
     },
     {
         id: 2,
-        name: "Wood Frame 2"
+        name: "Ossature bois dur"
     },
     {
         id: 3,
-        name: "Wood Frame 3"
+        name: "Ossature bois chêne"
     },
     {
         id: 4,
-        name: "Wood Frame 4"
+        name: "Ossature bois frêne"
     }
 ]
 
 const frames: Frame[] = [
     {
         id: 1,
-        name: "Frame 1"
+        name: "Bois"
     },
     {
         id: 2,
-        name: "Frame 2"
+        name: "Mé<tal"
     },
     {
         id: 3,
-        name: "Frame 3"
+        name: "Acier"
     },
     {
         id: 4,
-        name: "Frame 4"
+        name: "Fibre"
     }
 ]
 
 const natures: Nature[] = [
     {
         id: 1,
-        name: "Nature 1"
+        name: "Murs extérieurs"
     },
     {
         id: 2,
-        name: "Nature 2"
+        name: "Cloisons intérieures"
     },
     {
         id: 3,
-        name: "Nature 3"
+        name: "Plancher sur dalle"
     },
     {
         id: 4,
-        name: "Nature 4"
+        name: "Plancher porteur"
+    },
+    {
+        id: 5,
+        name: "Fermes de charpente"
+    },
+    {
+        id: 6,
+        name: "Couverture (toit)"
     }
 ]
 
 const componentTypes: ComponentType[] = [
     {
         id: 1,
-        name: "Component type 1"
+        name: "Famille de composants souple"
     },
     {
         id: 2,
-        name: "Component type 2"
+        name: "Famille de composants bois"
     },
     {
         id: 3,
-        name: "Component type 3"
+        name: "Famille de composants métal"
     },
     {
         id: 4,
-        name: "Component type 4"
+        name: "Famille de composants acier"
     }
 ]
 
 const technicalClauses: TechnicalClause[] = [
     {
         id: 1,
-        name: "Technical Clause 1"
+        name: "Caractéristiques de la dalle béton"
     },
     {
         id: 2,
-        name: "Technical Clause 2"
+        name: "Plots béton recevant une lisse basse horizontale"
     },
     {
         id: 3,
-        name: "Technical Clause 3"
+        name: "Caractéristiques de la dalle pierre"
     },
     {
         id: 4,
-        name: "Technical Clause 4"
+        name: "Caractéristiques de la dalle béton armé"
     }
 ]
 
@@ -174,105 +182,105 @@ const specifications: Specification[] = [
 const units: Unit[] = [
     {
         id: 1,
-        name: "Unit 1"
+        name: "cm"
     },
     {
         id: 2,
-        name: "Unit 2"
+        name: "m"
     },
     {
         id: 3,
-        name: "Unit 3"
+        name: "m²"
     },
     {
         id: 4,
-        name: "Unit 4"
+        name: "pièce"
     }
 ]
 
 const components: Component[] = [
     {
         id: 1,
-        name: "Component 1",
+        name: "Lisses ou contrefort",
         nature: natures[0],
         componentType: componentTypes[0],
         technicalClause: technicalClauses[0],
-        units: [
-            units[0]
-        ],
-        specifications: [
-            specifications[0]
-        ]
+        // units: [
+        //     units[0]
+        // ],
+        // specifications: [
+        //     specifications[0]
+        // ]
     },
     {
         id: 2,
-        name: "Component 2",
+        name: "Montants en bois",
         nature: natures[1],
         componentType: componentTypes[0]
     },
     {
         id: 3,
-        name: "Component 3",
+        name: "Sabots métalliques,",
         nature: natures[0],
         componentType: componentTypes[1],
-        units: [
-            units[1]
-        ],
-        specifications: [
-            specifications[0]
-        ]
+        // units: [
+        //     units[1]
+        // ],
+        // specifications: [
+        //     specifications[0]
+        // ]
     },
     {
         id: 4,
-        name: "Component 4",
+        name: "Boulons",
         nature: natures[2],
         componentType: componentTypes[1],
         technicalClause: technicalClauses[2]
     },
     {
         id: 5,
-        name: "Component 5",
+        name: "Gougeons",
         nature: natures[0],
         componentType: componentTypes[2],
         technicalClause: technicalClauses[3]
     },
     {
         id: 6,
-        name: "Component 6",
+        name: "Panneaux d’isolation",
         nature: natures[0],
         componentType: componentTypes[3],
         technicalClause: technicalClauses[3],
-        units: [
-            units[2],
-            units[3]
-        ],
-        specifications: [
-            specifications[2],
-            specifications[0]
-        ]
+        // units: [
+        //     units[2],
+        //     units[3]
+        // ],
+        // specifications: [
+        //     specifications[2],
+        //     specifications[0]
+        // ]
     },
     {
         id: 7,
-        name: "Component 7",
+        name: "Pare-pluie",
         nature: natures[2],
         componentType: componentTypes[3],
         technicalClause: technicalClauses[1]
     },
     {
         id: 8,
-        name: "Component 8",
+        name: "Planchers",
         nature: natures[2],
         componentType: componentTypes[1]
     },
     {
         id: 9,
-        name: "Component 9",
+        name: "Panneaux intermédiaires",
         nature: natures[3],
         componentType: componentTypes[1]
     },
     {
         id: 10,
-        name: "Component 10",
+        name: "Panneaux de couverture",
         nature: natures[1],
         componentType: componentTypes[2]
     }
@@ -281,26 +289,26 @@ const components: Component[] = [
 const cuts: Cut[] = [
     {
         id: 1,
-        name: 'Cut 1'
+        name: 'Coupe en travers'
     },
     {
         id: 2,
-        name: 'Cut 2'
+        name: 'Coupe intermédiaire'
     },
     {
         id: 3,
-        name: 'Cut 3'
+        name: 'Coupe complète'
     },
     {
         id: 4,
-        name: 'Cut 4'
+        name: 'Demi-coupe'
     }
 ]
 
 const modules: Module[] = [
     {
         id: 1,
-        name: "Module 1",
+        name: "Mur extérieur",
         cuts: [
             cuts[2]
         ],
@@ -310,16 +318,16 @@ const modules: Module[] = [
             components[3],
             components[1]
         ],
-        specifications: [
-            specifications[0]
-        ],
-        units: [
-            units[0]
-        ]
+        // specifications: [
+        //     specifications[0]
+        // ],
+        // units: [
+        //     units[0]
+        // ]
     },
     {
         id: 2,
-        name: "Module 2",
+        name: "Mur intérieur",
         cuts: [
             cuts[0],
             cuts[1]
@@ -329,21 +337,21 @@ const modules: Module[] = [
             components[0],
             components[4]
         ],
-        specifications: [
-            specifications[1],
-            specifications[3]
-        ],
-        units: [
-            units[3],
-            units[1]
-        ]
+        // specifications: [
+        //     specifications[1],
+        //     specifications[3]
+        // ],
+        // units: [
+        //     units[3],
+        //     units[1]
+        // ]
     }
 ]
 
 const models: Model[] = [
     {
         id: 1,
-        name: "Model 1",
+        name: "Modele 1",
         modules: [
             modules[0]
         ]
@@ -353,7 +361,7 @@ const models: Model[] = [
 const ranges: Range[] = [
     {
         id: 1,
-        name: "Range 1",
+        name: "Gamme bois",
         insulation: insulations[0],
         cover: covers[0],
         woodFrame: woodFrames[0],
@@ -364,7 +372,7 @@ const ranges: Range[] = [
     },
     {
         id: 2,
-        name: "Range 2",
+        name: "Gamme vert",
         insulation: insulations[1],
         cover: covers[1],
         woodFrame: woodFrames[1],
@@ -372,7 +380,7 @@ const ranges: Range[] = [
     },
     {
         id: 3,
-        name: "Range 3",
+        name: "Gamme total",
         insulation: insulations[2],
         cover: covers[2],
         woodFrame: woodFrames[2],
@@ -380,7 +388,7 @@ const ranges: Range[] = [
     },
     {
         id: 4,
-        name: "Range 4",
+        name: "Gamme blue",
         insulation: insulations[3],
         cover: covers[3],
         woodFrame: woodFrames[3],
@@ -408,21 +416,21 @@ const customers: Customer[] = [
         id: 3,
         reference: "LAS3",
         firstName: "Jean",
-        lastName: "Lasalle",
+        lastName: "Dupont",
         address: "55 Rue du Faubourg Saint-Honoré, 75008 Paris"
     },
     {
         id: 4,
         reference: "HUL4",
         firstName: "Nicolas",
-        lastName: "Hulot",
+        lastName: "Bertrand",
         address: "97 Place des Halles, 72500 Château-Du-Loir"
     },
     {
         id: 5,
         reference: "LREM",
-        firstName: "Manu",
-        lastName: "Macron",
+        firstName: "Manuel",
+        lastName: "Christophe",
         address: "55 Rue du Faubourg Saint-Honoré, 75008 Paris"
     }
 ]

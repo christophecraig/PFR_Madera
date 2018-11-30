@@ -5,7 +5,7 @@
   <ion-card-content>
     <form #newQuoteFormModules="ngForm" (submit)="onSubmit($event)">
       <ion-item lines="inset">
-        <ion-label position="floating" color="primary">Modules sélectionnés</ion-label>
+        <ion-label position="floating" color="primary" class="offset">Modules sélectionnés</ion-label>
         <ng-container *ngIf="quote.modules; then showSelectedModules"></ng-container>
         <ng-template #showSelectedModules>
           <ng-container *ngFor="let module of modules">
@@ -18,7 +18,7 @@
         </ng-template>
       </ion-item>
       <ion-item lines="inset">
-        <ion-label position="floating" color="primary">Modules disponibles</ion-label>
+        <ion-label position="floating" color="primary" class="offset">Modules disponibles</ion-label>
         <ng-container *ngIf="quote.modules; then showUnselectedModules else showEveryModule"></ng-container>
         <ng-template #showUnselectedModules>
           <ng-container *ngFor="let module of modules">

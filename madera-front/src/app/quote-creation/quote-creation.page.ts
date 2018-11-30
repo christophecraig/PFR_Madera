@@ -12,8 +12,8 @@ export class QuoteCreationPage implements OnInit {
 
   @ViewChild(Content) content: Content
 
-  // quote: Quote = new Quote()
-  quote: Quote = data.quotes[0]
+  quote: Quote = new Quote()
+  // quote: Quote = data.quotes[0]
 
   get debug() { return JSON.stringify(this.quote) }
 

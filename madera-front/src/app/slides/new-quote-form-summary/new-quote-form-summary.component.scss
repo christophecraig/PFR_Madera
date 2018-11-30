@@ -1,44 +1,64 @@
 ion-card ion-card {
-  border: 0;
-  padding: 0;
-  box-shadow: none;
-  margin: 0;
-  width: auto;
-  text-align: left;
+    border: 0;
+    padding: 0;
+    box-shadow: none;
+    margin: 0;
+    width: auto;
+    text-align: left;
 }
 
 ion-card ion-card-content {
-  padding: 0;
+    padding: 0;
 }
 
 ion-card-subtitle:not(:first-child) {
-  font-size: 14px;
-  color: #202020;
+    font-size: 14px;
+    color: #202020;
 }
 
 ion-card-header {
-  position: relative;
+    position: relative;
 }
 
-ion-card-content > ion-card > ion-card-header {
-  padding-top: 0;
+ion-card-content>ion-card>ion-card-header {
+    padding-top: 0;
 }
 
-.component-header::after, .module > ion-card-header::after, .specification > ion-card-header::after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: 10px;
-  height: 1px;
-  width: 30px;
-  background: linear-gradient(#333, #777);
+.module:not(:first-child) {
+    margin-top: 10px;
+}
+
+.module>ion-card-content,
+.component>ion-card-content {
+    border-left-width: 1px;
+    border-left-style: groove;
+    border-left-color: black;
+    padding-right: 0;
+    margin-left: 15px;
+}
+
+.module>ion-card-content>ion-card,
+.component>ion-card-content>ion-card {
+    padding-left: 0;
+}
+
+.component-header::after,
+.module>ion-card-header::after,
+.specification>ion-card-header::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    height: 1px;
+    width: 30px;
+    background: linear-gradient(#333, #777);
 }
 
 ion-card .component {
-  margin-bottom: 10px;
-  border-bottom: 1px solid #E0E0E0;
+    margin-bottom: 10px;
 }
 
-.component ion-card-content, .module > ion-card-content {
-  padding: 0 10px;
+.component ion-card-content,
+.module>ion-card-content {
+    padding: 0 10px;
 }
