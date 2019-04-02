@@ -1,4 +1,5 @@
 const restify = require('restify')
+const corsMiddleware = require('restify-cors-middleware')
 const customers = require('./data/customers')
 const users = require('./data/users')
 const ranges = require('./data/ranges')
@@ -17,13 +18,17 @@ const technicalClauses = require('./data/technicalClauses')
 const specifications = require('./data/specifications')
 const natures = require('./data/natures')
 
-function respond(req, res, next) {
-  res.send('hello ' + req.params.name);
-  next();
-}
+const cors = corsMiddleware({
+  preflightMaxAge: 5, //Optional
+  origins: ['*'],
+  allowHeaders: ['API-Token'],
+  exposeHeaders: ['API-Token-Expiry']
+})
 
 var server = restify.createServer();
 server.pre(restify.pre.sanitizePath());
+server.pre(cors.preflight)
+server.use(cors.actual)
 server.use(restify.plugins.bodyParser({mapParams: true}));
 
 server.get('/customers', customers.get);
