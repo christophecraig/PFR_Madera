@@ -1,14 +1,14 @@
-const connection = require('./mysqlConnexion').connection
+const connection = require('../mysqlConnexion').connection
 
 module.exports = {
   get(req, res, next) {
     if (req.params.id) {
-      console.log('super')
       connection.query('SELECT * from natures where id = ?', req.params.id, (err, results, fields) => {
-        res.send(err ? err : results[0]);
+        res.json(err ? err : results[0]);
       });
     } else {
       connection.query('SELECT * from natures', (err, results, fields) => {
+        console.log(results)
         res.json(err ? err : results);
       });
     }

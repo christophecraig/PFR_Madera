@@ -1,4 +1,4 @@
-const connection = require('./mysqlConnexion').connection
+const connection = require('../mysqlConnexion').connection
 
 module.exports = {
   get(req, res, next) {
@@ -28,25 +28,21 @@ module.exports = {
         break;
     }
     if (sql) {
-      console.log(sql)
       connection.query(sql, req.params.id, (err, results, fields) => {
-        console.log(results, fields)
         res.json(err ? err : results);
       })
     }
-    // connection.query('SELECT * from components where ' + req.params)
   },
   add(req, res, next) {
-    if (!req.body.lastName || !req.body.firstName || !req.body.ref || !req.body.address ) {
+    if (!req.body.name || !req.body.id_units || !req.body.id_natures) {
       res.send('Les données du formulaire sont incorrectes, sont contenu n\'a pas été soumis.')
     }
     // @TODO: arguments de la requête SQL à modifier
-    connection.query('INSERT INTO components (lastName, firstName, ref, address) values (?, ?, ?, ?)',
+    connection.query('INSERT INTO components (name, id_units, id_natures) values (?, ?, ?)',
     [
-      req.body.lastName, 
-      req.body.firstName, 
-      req.body.ref, 
-      req.body.address
+      req.body.name, 
+      req.body.id_units, 
+      req.body.id_natures,
     ], 
     (err, results, fields) => {
       if (err) {
