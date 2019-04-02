@@ -18,16 +18,21 @@ module.exports = {
     let sql = ''
     switch (resource) {
       case 'models' : 
-        sql = 'SELECT * from modules inner join modules_per_model on modules_per_model.id_quotes = quotes.id where modules_per_model.id_modules = ?';
+        sql = 'SELECT * from modules inner join modules_per_model on modules_per_model.id_modules = modules.id where modules_per_model.id_modules = ?';
         break;
       case 'ranges' : 
-        sql = 'SELECT * from modules inner join modules_per_range_per_quote on modules_per_range_per_quote.id_quotes = quotes.id where modules_per_range_per_quote.id_ranges = ?';
+        sql = 'SELECT * from modules inner join modules_per_range_per_quote on modules_per_range_per_quote.id_modules = modules.id where modules_per_range_per_quote.id_ranges = ?';
         break;
       case 'quotes' : 
-        sql = 'SELECT * from modules inner join modules_per_range_per_quote on modules_per_range_per_quote.id_quotes = quotes.id where modules_per_range_per_quote.id_quotes = ?';
+        sql = 'SELECT * from modules inner join modules_per_range_per_quote on modules_per_range_per_quote.id_modules = modules.id where modules_per_range_per_quote.id_quotes = ?';
         break;
       default : 
         break;
+    }
+    if (sql) {
+      connection.query(sql, req.params.id, (err, results, fields) => {
+        res.json(err ? err : results)
+      })
     }
   },
   add(req, res, next) {
