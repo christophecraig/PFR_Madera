@@ -79,7 +79,7 @@ const frames: Frame[] = [
     },
     {
         id: 2,
-        name: "Mé<tal"
+        name: "Métal"
     },
     {
         id: 3,
