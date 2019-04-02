@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Quote } from '../models/Quote';
-import { Slides, Content } from '@ionic/angular';
+import { IonSlides, IonContent } from '@ionic/angular';
 import data from '../db/data';
 
 @Component({
@@ -10,7 +10,7 @@ import data from '../db/data';
 })
 export class QuoteCreationPage implements OnInit {
 
-  @ViewChild(Content) content: Content
+  @ViewChild(IonContent) content: IonContent
 
   quote: Quote = new Quote()
   // quote: Quote = data.quotes[0]
@@ -21,7 +21,7 @@ export class QuoteCreationPage implements OnInit {
     touchRatio: 0
   }
 
-  @ViewChild(Slides) slides: Slides
+  @ViewChild(IonSlides) slides: IonSlides
 
   async changeSlide(forward: boolean) {
     await this.content.scrollToPoint(0, 0)

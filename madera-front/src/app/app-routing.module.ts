@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', loadChildren: './quote-creation/quote-creation.module#QuoteCreationPageModule' },
-  // { path: 'range', loadChildren: './modals/range/range.module#RangePageModule' },
+  { path: '', loadChildren: './pages/home/home.module#HomePageModule' },
+  { path: 'creation', loadChildren: './quote-creation/quote-creation.module#QuoteCreationPageModule' },
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes, {

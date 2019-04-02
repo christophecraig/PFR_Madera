@@ -1,0 +1,17 @@
+{
+  "name": "madera-rest-api",
+  "version": "1.0.0",
+  "description": "API REST pour le projet madera, en node.js avec Restify",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.16.0",
+    "restify": "^8.2.0",
+    "restify-cors-middleware": "^1.1.1"
+  }
+}
