@@ -14,19 +14,26 @@ export class NewQuoteFormBaseComponent implements OnInit {
 
   @Output() changeSlide = new EventEmitter<boolean>()
 
-  customers: Customer[] = data.customers
+  customers: Customer[] = []
 
   getCustomerFromId(id: number): Customer {
     let c: Customer
-    this.customers.forEach(customer => {
-      if (customer.id === id) {
+
+    fetch('http://localhost:8080/customers/' + id).then(response => {
+      response.json().then(customer => {
         c = customer
-      }
+      })
     })
     return c || null
   }
 
-  constructor() { }
+  constructor() {
+    fetch('http://localhost:8080/customers').then(response => {
+      response.json().then(data => {
+        this.customers = data
+      })
+    })
+   }
 
   ngOnInit() { }
 
