@@ -8,7 +8,6 @@ module.exports = {
       });
     } else {
       connection.query('SELECT * from natures', (err, results, fields) => {
-        console.log(results)
         res.json(err ? err : results);
       });
     }

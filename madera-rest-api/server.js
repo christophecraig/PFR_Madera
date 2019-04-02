@@ -1,13 +1,20 @@
 const restify = require('restify')
-const documentation = require('./data/documentation')
-const customers = require('./customers')
+const customers = require('./data/customers')
 const users = require('./data/users')
-const ranges = require('./ranges')
-const covers = require('./covers')
-const frames = require('./frames')
-const insulations = require('./insulations')
-const woodFrames = require('./woodFrames')
+const ranges = require('./data/ranges')
+const covers = require('./data/covers')
+const frames = require('./data/frames')
+const insulations = require('./data/insulations')
+const woodFrames = require('./data/woodFrames')
 const components = require('./data/components')
+const componentTypes = require('./data/componentTypes')
+const models = require('./data/models')
+const modules = require('./data/modules')
+const cuts = require('./data/cuts')
+const quotes = require('./data/quotes')
+const units = require('./data/units')
+const technicalClauses = require('./data/technicalClauses')
+const specifications = require('./data/specifications')
 const natures = require('./data/natures')
 
 function respond(req, res, next) {
@@ -18,8 +25,6 @@ function respond(req, res, next) {
 var server = restify.createServer();
 server.pre(restify.pre.sanitizePath());
 server.use(restify.plugins.bodyParser({mapParams: true}));
-
-server.get('/doc/:table', documentation.get);
 
 server.get('/customers', customers.get);
 server.get('/customers/:id', customers.get);
@@ -49,11 +54,21 @@ server.post('/frames/add', frames.add);
 server.get('/ranges', ranges.get);
 server.get('/ranges/:id', ranges.get);
 server.get('/ranges/:id/components', components.getBy);
+server.get('/ranges/:id/modules', modules.getBy);
 server.post('/ranges/add', ranges.add);
 
 server.get('/components', components.get);
 server.get('/components/:id', components.get);
 server.post('/components/add', components.add);
+
+server.get('/modules', modules.get);
+server.get('/modules/:id', modules.get);
+server.post('/modules/add', modules.add);
+
+server.get('/models', models.get);
+server.get('/models/:id', models.get);
+server.get('/models/:id/modules', modules.getBy);
+server.post('/models/add', models.add);
 
 server.get('/natures', natures.get);
 server.get('/natures/:id', natures.get);

@@ -1,4 +1,4 @@
-const connection = require('./mysqlConnexion').connection
+const connection = require('../mysqlConnexion').connection
 
 module.exports = {
   get(req, res, next) {

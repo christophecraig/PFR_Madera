@@ -26,10 +26,9 @@ module.exports = {
     ], 
     (err, results, fields) => {
       if (err) {
-        console.error(err);
-        // throw err;
+        res.json({error: true, detail: err})
       }
-      res.send('yessssss');
+      res.json({error: false})
     })
   }
 }
