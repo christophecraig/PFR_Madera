@@ -16,7 +16,7 @@
       <new-quote-form-range [quote]="quote" (changeSlide)="changeSlide($event)"></new-quote-form-range>
     </ion-slide>
     <ion-slide>
-      <new-quote-form-modules [quote]="quote" (changeSlide)="changeSlide($event)"></new-quote-form-modules>
+      <new-quote-form-modules [quote]="quote" [modules]="modules" (changeSlide)="changeSlide($event)"></new-quote-form-modules>
     </ion-slide>
     <ion-slide>
       <new-quote-form-summary [quote]="quote" (changeSlide)="changeSlide($event)"></new-quote-form-summary>

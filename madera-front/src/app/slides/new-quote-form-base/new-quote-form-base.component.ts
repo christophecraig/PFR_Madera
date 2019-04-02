@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angu
 import { Quote } from '../../models/Quote';
 import { Customer } from '../../models/Customer';
 import data from '../../db/data';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'new-quote-form-base',
@@ -14,12 +15,12 @@ export class NewQuoteFormBaseComponent implements OnInit {
 
   @Output() changeSlide = new EventEmitter<boolean>()
 
-  customers: Customer[] = []
+  customers: Customer[]
 
   getCustomerFromId(id: number): Customer {
     let c: Customer
 
-    fetch('http://localhost:8080/customers/' + id).then(response => {
+    fetch(`http://${environment.db.host}:${environment.db.port}/customers/${id}`).then(response => {
       response.json().then(customer => {
         c = customer
       })
@@ -28,12 +29,13 @@ export class NewQuoteFormBaseComponent implements OnInit {
   }
 
   constructor() {
-    fetch('http://localhost:8080/customers').then(response => {
+    fetch(`http://${environment.db.host}:${environment.db.port}/customers`).then(response => {
       response.json().then(data => {
+        console.log(data)
         this.customers = data
       })
     })
-   }
+  }
 
   ngOnInit() { }
 

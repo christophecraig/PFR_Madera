@@ -24,7 +24,19 @@ function respond(req, res, next) {
 
 var server = restify.createServer();
 server.pre(restify.pre.sanitizePath());
-server.use(restify.plugins.bodyParser({mapParams: true}));
+server.use(restify.plugins.bodyParser({
+  mapParams: true
+}));
+
+const corsMiddleware = require('restify-cors-middleware')
+
+const cors = corsMiddleware({
+  preflightMaxAge: 5, //Optional
+  origins: ['*'],
+})
+
+server.pre(cors.preflight)
+server.use(cors.actual)
 
 server.get('/customers', customers.get);
 server.get('/customers/:id', customers.get);

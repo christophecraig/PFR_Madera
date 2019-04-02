@@ -3,6 +3,7 @@ import { Quote } from '../../models/Quote';
 import { Range } from '../../models/Range';
 import data from '../../db/data';
 import { Model } from '../../models/Model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'new-quote-form-range',
@@ -15,7 +16,7 @@ export class NewQuoteFormRangeComponent implements OnInit {
 
   @Output() changeSlide = new EventEmitter<boolean>()
 
-  ranges: Range[] = data.ranges
+  ranges: Range[]
 
   selectedModel: Model
 
@@ -41,7 +42,14 @@ export class NewQuoteFormRangeComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    fetch(`http://${environment.db.host}:${environment.db.port}/ranges`).then(response => {
+      response.json().then(data => {
+        console.log(data)
+        this.ranges = data
+      })
+    })
+  }
 
   onRangeSelect(event) {
     this.quote.range = this.getRangeFromId(parseInt(event.target.value))

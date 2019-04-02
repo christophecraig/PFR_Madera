@@ -4,7 +4,11 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 let env = {
-    production: false
+    production: false,
+    db: {
+        host: 'localhost',
+        port: 8080
+    }
 }
 
 export const environment = env;

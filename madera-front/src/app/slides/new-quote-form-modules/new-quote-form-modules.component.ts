@@ -14,7 +14,7 @@ export class NewQuoteFormModulesComponent implements OnInit {
 
   @Output() changeSlide = new EventEmitter<boolean>()
 
-  modules: Module[] = data.modules
+  @Input() modules: Module[]
 
   getModuleFromId(id: number): Module {
     let m: Module
