@@ -8,6 +8,11 @@ import { QuoteModule } from './quote/quote.module';
 import { UserModule } from './user/user.module';
 import { CustomerModule } from './customer/customer.module';
 import { StateModule } from './state/state.module';
+import { FrameModule } from './frame/frame.module';
+import { CutModule } from './cut/cut.module';
+import { CoverModule } from './cover/cover.module';
+import { ComponentTypeModule } from './component-type/component-type.module';
+import { ComponentModule } from './component/component.module';
 
 @Module({
   imports: [
@@ -17,6 +22,11 @@ import { StateModule } from './state/state.module';
     UserModule,
     CustomerModule,
     StateModule,
+    FrameModule,
+    CutModule,
+    CoverModule,
+    ComponentTypeModule,
+    ComponentModule,
   ],
   controllers: [
     AppController,

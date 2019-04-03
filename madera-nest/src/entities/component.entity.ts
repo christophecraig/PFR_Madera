@@ -2,7 +2,7 @@ import { PrimaryGeneratedColumn, Column, ManyToMany, Entity, JoinTable, ManyToOn
 import { Module } from './module.entity';
 import { TechnicalClause } from './technicalClause.entity';
 import { Nature } from './nature.entity';
-import { ComponentType } from './componentType.entity';
+import { ComponentType } from './component-type.entity';
 import { Provider } from './provider.entity';
 import { ApiModelPropertyOptional, ApiModelProperty } from '@nestjs/swagger';
 

@@ -12,7 +12,7 @@ export class CustomerController {
     findAll(): Promise<Customer[]> {
         return this.customerService.findAll();
     }
-    
+
     @Get(':id')
     findOne(@Param('id') id: number): Promise<Customer> {
         return this.customerService.findOne(id);

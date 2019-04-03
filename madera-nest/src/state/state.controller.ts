@@ -12,7 +12,7 @@ export class StateController {
     findAll(): Promise<State[]> {
         return this.stateService.findAll();
     }
-    
+
     @Get(':id')
     findOne(@Param('id') id: number): Promise<State> {
         return this.stateService.findOne(id);
