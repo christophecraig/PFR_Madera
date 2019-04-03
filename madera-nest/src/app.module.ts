@@ -13,6 +13,17 @@ import { CutModule } from './cut/cut.module';
 import { CoverModule } from './cover/cover.module';
 import { ComponentTypeModule } from './component-type/component-type.module';
 import { ComponentModule } from './component/component.module';
+import { WoodFrameModule } from './wood-frame/wood-frame.module';
+import { InsulationModule } from './insulation/insulation.module';
+import { ModelModule } from './model/model.module';
+import { ModuleModule } from './module/module.module';
+import { NatureModule } from './nature/nature.module';
+import { ProviderModule } from './provider/provider.module';
+import { RangeModule } from './range/range.module';
+import { RankModule } from './rank/rank.module';
+import { SpecificationModule } from './specification/specification.module';
+import { TechnicalClauseModule } from './technical-clause/technical-clause.module';
+import { UnitModule } from './unit/unit.module';
 
 @Module({
   imports: [
@@ -27,6 +38,17 @@ import { ComponentModule } from './component/component.module';
     CoverModule,
     ComponentTypeModule,
     ComponentModule,
+    WoodFrameModule,
+    InsulationModule,
+    ModelModule,
+    ModuleModule,
+    NatureModule,
+    ProviderModule,
+    RangeModule,
+    RankModule,
+    SpecificationModule,
+    TechnicalClauseModule,
+    UnitModule,
   ],
   controllers: [
     AppController,

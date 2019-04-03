@@ -5,7 +5,7 @@ import { Quote } from './quote.entity';
 import { Insulation } from './insulation.entity';
 import { Cover } from './cover.entity';
 import { Frame } from './frame.entity';
-import { WoodFrame } from './woodFrame.entity';
+import { WoodFrame } from './wood-frame.entity';
 import { ApiModelProperty } from '@nestjs/swagger';
 
 @Entity()
