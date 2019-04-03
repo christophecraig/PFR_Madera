@@ -21,15 +21,21 @@ export class Component {
     @ApiModelPropertyOptional()
     technicalClauses: TechnicalClause[];
 
-    @ManyToOne(() => Nature, nature => nature.components)
+    @ManyToOne(() => Nature, nature => nature.components, {
+        nullable: true,
+        eager: true
+    })
     @ApiModelProperty()
     nature: Nature;
 
-    @ManyToOne(() => ComponentType, componentType => componentType.components)
+    @ManyToOne(() => ComponentType, componentType => componentType.components, {
+        eager: true
+    })
     @ApiModelProperty()
     componentType: ComponentType;
 
     @ManyToMany(() => Module)
+    @ApiModelProperty()
     modules: Module[];
 
     @ManyToOne(() => Provider, provider => provider.components)

@@ -27,7 +27,9 @@ export class Quote {
     // @IsDate()
     date: Date;
 
-    @ManyToOne(() => State, state => state.quotes)
+    @ManyToOne(() => State, state => state.quotes, {
+        eager: true
+    })
     @ApiModelProperty()
     state: State;
 

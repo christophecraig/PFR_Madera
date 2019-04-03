@@ -17,25 +17,37 @@ export class Range {
     @ApiModelProperty()
     name: string;
 
-    @OneToMany(() => Model, model => model.range)
+    @OneToMany(() => Model, model => model.range, {
+        eager: true
+    })
     models: Model[];
 
     @ManyToMany(() => Module)
     @JoinTable()
     modules: Module[];
 
-    @ManyToMany(() => Quote)
+    @ManyToMany(() => Quote, {
+        nullable: true
+    })
     quotes: Quote[];
 
-    @ManyToOne(() => Insulation, insulation => insulation.ranges)
+    @ManyToOne(() => Insulation, insulation => insulation.ranges, {
+        eager: true
+    })
     insulation: Insulation;
 
-    @ManyToOne(() => Cover, cover => cover.ranges)
+    @ManyToOne(() => Cover, cover => cover.ranges, {
+        eager: true
+    })
     cover: Cover;
 
-    @ManyToOne(() => Frame, frame => frame.ranges)
+    @ManyToOne(() => Frame, frame => frame.ranges, {
+        eager: true
+    })
     frame: Frame;
 
-    @ManyToOne(() => WoodFrame, woodFrame => woodFrame.ranges)
+    @ManyToOne(() => WoodFrame, woodFrame => woodFrame.ranges, {
+        eager: true
+    })
     woodFrame: WoodFrame;
 }

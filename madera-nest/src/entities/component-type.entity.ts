@@ -12,6 +12,8 @@ export class ComponentType {
     @ApiModelProperty()
     name: string;
 
-    @OneToMany(() => Component, component => component.componentType)
+    @OneToMany(() => Component, component => component.componentType, {
+        nullable: true
+    })
     components: Component[];
 }
