@@ -36,22 +36,63 @@ module.exports = {
     }
   },
   add(req, res, next) {
-    if (!req.body.lastName || !req.body.firstName || !req.body.ref || !req.body.address) {
+    if (!req.body.name || !req.body.id_natures || !req.body.id_ranges || !req.body.id_models) {
       res.send('Les données du formulaire sont incorrectes, sont contenu n\'a pas été soumis.')
     }
-    connection.query('INSERT INTO quotes (lastName, firstName, ref, address) values (?, ?, ?, ?)',
+
+    connection.beginTransaction(function (err) {
+      if (err) {
+        throw err;
+      }
+      connection.query('INSERT INTO modules (name, id_natures) values (?, ?)',
       [
-        req.body.lastName,
-        req.body.firstName,
-        req.body.ref,
-        req.body.address
-      ],
-      (err, results, fields) => {
-        if (err) {
-          console.error(err);
-          throw err;
+        req.body.name,
+        req.body.id_natures,
+      ], 
+      (error, results, fields) => {
+        if (error) {
+          return connection.rollback(function () {
+            throw error;
+          });
         }
-        res.send('yessssss');
-      })
+
+        let lastId = results.insertId
+
+        connection.query('INSERT INTO modules_per_range_per_quote (id_ranges, id_modules, id_quotes) values (?, ?, ?)', 
+        [
+          req.body.id_ranges,
+          lastId,
+          req.body.id_quotes,
+        ], 
+        (error, results, fields) => {
+          if (error) {
+            return connection.rollback(function () {
+              throw error;
+            });
+          }
+
+          connection.query('INSERT INTO modules_per_model (id_modules, id_models) values (?, ?)',
+          [
+            lastId,
+            req.body.id_models,
+          ], 
+          (error, results, fields) => {
+            if (error) {
+              return connection.rollback(function () {
+                throw error;
+              });
+            }
+
+            connection.commit(function (err) {
+              if (err) {
+                return connection.rollback(function () {
+                  throw err;
+                });
+              }
+            });
+          });
+        });
+      });
+    });
   }
 }
