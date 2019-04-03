@@ -1,4 +1,4 @@
 export class WoodFrame {
-    id: number
-    name: string
+    id: number;
+    name: string;
 }

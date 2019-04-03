@@ -1,8 +1,8 @@
 export class RegisterForm {
-    email: string
-    password: string
-    passwordConfirmation: string
-    idCity: string
+    email: string;
+    password: string;
+    passwordConfirmation: string;
+    idCity: string;
     students: {
         firstName: string
         lastName: string
@@ -11,9 +11,9 @@ export class RegisterForm {
             firstName: null,
             lastName: null,
             birthDate: null
-        }
+        };
 
-    invalidFields: string[] = []
+    invalidFields: string[] = [];
 
     validatePassword(): boolean {
         if (
@@ -24,10 +24,10 @@ export class RegisterForm {
             && /[a-z]/.test(this.password) // must contain at least one lowercase
             && /[0-9]/.test(this.password) // must contain at least one number
         ) {
-            return true
+            return true;
         }
-        this.invalidFields.push('password')
-        return false
+        this.invalidFields.push('password');
+        return false;
     }
 
     validatePasswordConfirmation(): boolean {
@@ -35,26 +35,26 @@ export class RegisterForm {
             this.password && this.passwordConfirmation
             && this.password === this.passwordConfirmation
         ) {
-            return true
+            return true;
         }
-        this.invalidFields.push('passwordConfirmation')
-        return false
+        this.invalidFields.push('passwordConfirmation');
+        return false;
     }
 
     validateCity(): boolean {
-        if (this.idCity && parseInt(this.idCity) > 0) {
-            return true
+        if (this.idCity && parseInt(this.idCity, 10) > 0) {
+            return true;
         }
-        this.invalidFields.push('idCity')
-        return false
+        this.invalidFields.push('idCity');
+        return false;
     }
 
     validate(): boolean {
-        this.invalidFields = []
+        this.invalidFields = [];
         return (
             this.validatePassword()
             && this.validatePasswordConfirmation()
             && this.validateCity()
-        )
+        );
     }
 }

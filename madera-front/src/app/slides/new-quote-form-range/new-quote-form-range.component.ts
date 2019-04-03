@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { Quote } from '../../models/Quote';
 import { Range } from '../../models/Range';
-import data from '../../db/data';
 import { Model } from '../../models/Model';
 import { environment } from '../../../environments/environment';
 
@@ -12,32 +11,35 @@ import { environment } from '../../../environments/environment';
 })
 export class NewQuoteFormRangeComponent implements OnInit {
 
-  @Input() quote: Quote
+  @Input() quote: Quote;
 
-  @Output() changeSlide = new EventEmitter<boolean>()
+  @Output() changeSlide = new EventEmitter<boolean>();
 
-  ranges: Range[]
+  @Output() rangeChanged = new EventEmitter<Range>();
 
-  selectedModel: Model
+  ranges: Range[];
+
+  selectedModel: Model;
 
   getRangeFromId(id: number): Range {
-    let r: Range
+    let r: Range;
     this.ranges.forEach(range => {
       if (range.id === id) {
-        r = range
+        r = range;
+        this.rangeChanged.emit(r);
       }
-    })
-    return r || null
+    });
+    return r || null;
   }
 
   getModelFromId(id: number): Model {
-    let m: Model
+    let m: Model;
     this.quote.range.models.forEach(model => {
       if (model.id === id) {
-        m = model
+        m = model;
       }
-    })
-    return m || null
+    });
+    return m || null;
   }
 
   constructor() { }
@@ -45,40 +47,40 @@ export class NewQuoteFormRangeComponent implements OnInit {
   ngOnInit() {
     fetch(`http://${environment.db.host}:${environment.db.port}/ranges`).then(response => {
       response.json().then(data => {
-        console.log(data)
-        this.ranges = data
-      })
-    })
+        console.log(data);
+        this.ranges = data;
+      });
+    });
   }
 
   onRangeSelect(event) {
-    this.quote.range = this.getRangeFromId(parseInt(event.target.value))
-    let ok: boolean = false
+    this.quote.range = this.getRangeFromId(parseInt(event.target.value, 10));
+    let ok = false;
     if (this.quote.range.models) {
       this.quote.range.models.forEach(model => {
         if (this.selectedModel === model) {
-          ok = true
+          ok = true;
         }
-      })
+      });
     }
     if (!ok) {
-      this.selectedModel = null
-      this.quote.modules = []
+      this.selectedModel = null;
+      this.quote.modules = [];
     }
   }
 
   onModelSelect(event) {
-    if (parseInt(event.target.value)) {
-      this.selectedModel = this.getModelFromId(parseInt(event.target.value))
-      this.quote.modules = this.selectedModel.modules
+    if (parseInt(event.target.value, 10)) {
+      this.selectedModel = this.getModelFromId(parseInt(event.target.value, 10));
+      this.quote.modules = this.selectedModel.modules;
     } else {
-      this.selectedModel = null
-      this.quote.modules = []
+      this.selectedModel = null;
+      this.quote.modules = [];
     }
   }
 
   onSubmit(event) {
-    this.changeSlide.emit(true)
+    this.changeSlide.emit(true);
   }
 
 }

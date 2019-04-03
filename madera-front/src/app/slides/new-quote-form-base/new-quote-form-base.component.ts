@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { Quote } from '../../models/Quote';
 import { Customer } from '../../models/Customer';
-import data from '../../db/data';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -11,40 +10,40 @@ import { environment } from '../../../environments/environment';
 })
 export class NewQuoteFormBaseComponent implements OnInit {
 
-  @Input() quote: Quote
+  @Input() quote: Quote;
 
-  @Output() changeSlide = new EventEmitter<boolean>()
+  @Output() changeSlide = new EventEmitter<boolean>();
 
-  customers: Customer[]
+  customers: Customer[];
 
   getCustomerFromId(id: number): Customer {
-    let c: Customer
+    let c: Customer;
 
     fetch(`http://${environment.db.host}:${environment.db.port}/customers/${id}`).then(response => {
       response.json().then(customer => {
-        c = customer
-      })
-    })
-    return c || null
+        c = customer;
+      });
+    });
+    return c || null;
   }
 
   constructor() {
     fetch(`http://${environment.db.host}:${environment.db.port}/customers`).then(response => {
       response.json().then(data => {
-        console.log(data)
-        this.customers = data
-      })
-    })
+        console.log(data);
+        this.customers = data;
+      });
+    });
   }
 
   ngOnInit() { }
 
   onCustomerSelect(event) {
-    this.quote.customer = this.getCustomerFromId(parseInt(event.target.value))
+    this.quote.customer = this.getCustomerFromId(parseInt(event.target.value, 10));
   }
 
   onSubmit(event) {
-    this.changeSlide.emit(true)
+    this.changeSlide.emit(true);
   }
 
 }

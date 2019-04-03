@@ -10,20 +10,20 @@ import data from '../../db/data';
 })
 export class NewQuoteFormModulesComponent implements OnInit {
 
-  @Input() quote: Quote
+  @Input() quote: Quote;
 
-  @Output() changeSlide = new EventEmitter<boolean>()
+  @Output() changeSlide = new EventEmitter<boolean>();
 
-  @Input() modules: Module[]
+  @Input() modules: Module[];
 
   getModuleFromId(id: number): Module {
-    let m: Module
+    let m: Module;
     this.modules.forEach(module => {
       if (module.id === id) {
-        m = module
+        m = module;
       }
-    })
-    return m || null
+    });
+    return m || null;
   }
 
   constructor() { }
@@ -31,17 +31,17 @@ export class NewQuoteFormModulesComponent implements OnInit {
   ngOnInit() { }
 
   onSubmit(event) {
-    this.changeSlide.emit(true)
+    this.changeSlide.emit(true);
   }
 
   removeModule(idModule: number) {
     this.quote.modules = this.quote.modules.filter(e => {
-      return e.id !== idModule
-    })
+      return e.id !== idModule;
+    });
   }
 
   addModule(idModule: number) {
-    this.quote.modules.push(this.getModuleFromId(idModule))
+    this.quote.modules.push(this.getModuleFromId(idModule));
   }
 
 }

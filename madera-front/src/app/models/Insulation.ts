@@ -1,4 +1,4 @@
 export class Insulation {
-    id: number
-    name: string
+    id: number;
+    name: string;
 }

@@ -1,7 +1,7 @@
-import { Module } from "./Module";
+import { Module } from './Module';
 
 export class Model {
-    id: number
-    name: string
-    modules: Module[]
+    id: number;
+    name: string;
+    modules: Module[];
 }

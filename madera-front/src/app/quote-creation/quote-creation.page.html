@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar color="tertiary">
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/"></ion-back-button>
-      </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
     <ion-title>CONCEPTION DE DEVIS</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,7 +13,8 @@
       <new-quote-form-base [quote]="quote" (changeSlide)="changeSlide($event)"></new-quote-form-base>
     </ion-slide>
     <ion-slide>
-      <new-quote-form-range [quote]="quote" (changeSlide)="changeSlide($event)"></new-quote-form-range>
+      <new-quote-form-range [quote]="quote" (changeSlide)="changeSlide($event)" (rangeChanged)="rangeChanged($event)">
+      </new-quote-form-range>
     </ion-slide>
     <ion-slide>
       <new-quote-form-modules [quote]="quote" [modules]="modules" (changeSlide)="changeSlide($event)"></new-quote-form-modules>

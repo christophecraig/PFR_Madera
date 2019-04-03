@@ -8,9 +8,9 @@ import { Quote } from '../../models/Quote';
 })
 export class NewQuoteFormSummaryComponent implements OnInit {
 
-  @Input() quote: Quote
+  @Input() quote: Quote;
 
-  @Output() changeSlide = new EventEmitter<boolean>()
+  @Output() changeSlide = new EventEmitter<boolean>();
 
   constructor() { }
 

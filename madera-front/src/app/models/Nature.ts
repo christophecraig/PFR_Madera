@@ -1,4 +1,4 @@
 export class Nature {
-    id: number
-    name: string
+    id: number;
+    name: string;
 }

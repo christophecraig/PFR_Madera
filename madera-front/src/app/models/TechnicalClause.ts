@@ -1,4 +1,4 @@
 export class TechnicalClause {
-    id: number
-    name: string
+    id: number;
+    name: string;
 }
