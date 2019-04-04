@@ -1,7 +1,9 @@
 import { Controller, Get, Param, Post, Body } from '@nestjs/common';
 import { UnitService } from './unit.service';
-import { Unit } from 'src/entities/unit.entity';
+import { Unit } from '@entities/unit.entity';
+import { ApiUseTags } from '@nestjs/swagger';
 
+@ApiUseTags('unit')
 @Controller('unit')
 export class UnitController {
     constructor(private readonly unitService: UnitService) {

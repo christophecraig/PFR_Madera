@@ -1,11 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, ManyToOne, JoinTable, JoinColumn } from 'typeorm';
-import { Quote } from './quote.entity';
-import { Cut } from './cut.entity';
-import { Nature } from './nature.entity';
-import { Model } from './model.entity';
-import { Component } from './component.entity';
-import { Range } from './range.entity';
+import { Quote } from '@entities/quote.entity';
+import { Cut } from '@entities/cut.entity';
+import { Model } from '@entities/model.entity';
+import { Component } from '@entities/component.entity';
+import { Range } from '@entities/range.entity';
 import { ApiModelPropertyOptional, ApiModelProperty } from '@nestjs/swagger';
+import { Specification } from './specification.entity';
+import { Unit } from './unit.entity';
 
 @Entity()
 export class Module {
@@ -18,27 +19,41 @@ export class Module {
     name: string;
 
     @ManyToMany(() => Quote)
+    @ApiModelPropertyOptional()
     quotes: Quote[];
 
-    @ManyToOne(() => Cut, cut => cut.modules)
+    @ManyToOne(() => Cut, cut => cut.modules, {
+        eager: true,
+    })
     @JoinColumn()
     @ApiModelProperty()
     cut: Cut;
 
-    @ManyToOne(() => Nature, nature => nature.modules)
-    @JoinTable()
+    @ManyToOne(() => Specification, specification => specification.modules, {
+        eager: true,
+    })
     @ApiModelProperty()
-    nature: Nature;
+    specification: Specification;
+
+    @ManyToOne(() => Unit, unit => unit.modules, {
+        eager: true,
+    })
+    @ApiModelProperty()
+    unit: Unit;
 
     @ManyToMany(() => Model)
+    @ApiModelPropertyOptional()
     models: Model[];
 
-    @ManyToMany(() => Component)
+    @ManyToMany(() => Component, {
+        eager: true,
+    })
     @JoinTable()
     @ApiModelPropertyOptional()
     components: Component[];
 
     @ManyToMany(() => Range)
+    @ApiModelPropertyOptional()
     ranges: Range[];
 
 }

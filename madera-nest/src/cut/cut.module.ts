@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Cut } from 'src/entities/cut.entity';
+import { Cut } from '@entities/cut.entity';
 import { CutService } from './cut.service';
 import { CutController } from './cut.controller';
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Cut } from 'src/entities/cut.entity';
+import { Cut } from '@entities/cut.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()

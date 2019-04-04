@@ -1,7 +1,9 @@
 import { Controller, Get, Param, Post, Body } from '@nestjs/common';
 import { ProviderService } from './provider.service';
-import { Provider } from 'src/entities/provider.entity';
+import { Provider } from '@entities/provider.entity';
+import { ApiUseTags } from '@nestjs/swagger';
 
+@ApiUseTags('provider')
 @Controller('provider')
 export class ProviderController {
     constructor(private readonly providerService: ProviderService) {

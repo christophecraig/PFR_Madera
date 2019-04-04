@@ -1,8 +1,10 @@
 import { Controller, Get, Param, Post, Body } from '@nestjs/common';
 import { WoodFrameService } from './wood-frame.service';
-import { WoodFrame } from 'src/entities/wood-frame.entity';
+import { WoodFrame } from '@entities/wood-frame.entity';
+import { ApiUseTags } from '@nestjs/swagger';
 
-@Controller('woodFrame')
+@ApiUseTags('wood-frame')
+@Controller('wood-frame')
 export class WoodFrameController {
     constructor(private readonly woodFrameService: WoodFrameService) {
 

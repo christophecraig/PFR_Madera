@@ -1,7 +1,9 @@
 import { Controller, Get, Param, Post, Body } from '@nestjs/common';
 import { CutService } from './cut.service';
-import { Cut } from 'src/entities/cut.entity';
+import { Cut } from '@entities/cut.entity';
+import { ApiUseTags } from '@nestjs/swagger';
 
+@ApiUseTags('cut')
 @Controller('cut')
 export class CutController {
     constructor(private readonly cutService: CutService) {

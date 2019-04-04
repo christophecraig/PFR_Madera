@@ -19,7 +19,7 @@ export class NewQuoteFormBaseComponent implements OnInit {
   getCustomerFromId(id: number): Customer {
     let c: Customer;
 
-    fetch(`http://${environment.db.host}:${environment.db.port}/customers/${id}`).then(response => {
+    fetch(`http://${environment.db.host}:${environment.db.port}/customer/${id}`).then(response => {
       response.json().then(customer => {
         c = customer;
       });
@@ -28,7 +28,7 @@ export class NewQuoteFormBaseComponent implements OnInit {
   }
 
   constructor() {
-    fetch(`http://${environment.db.host}:${environment.db.port}/customers`).then(response => {
+    fetch(`http://${environment.db.host}:${environment.db.port}/customer`).then(response => {
       response.json().then(data => {
         console.log(data);
         this.customers = data;

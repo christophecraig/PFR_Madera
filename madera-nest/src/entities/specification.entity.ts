@@ -1,7 +1,7 @@
 import { PrimaryGeneratedColumn, Column, ManyToMany, Entity, OneToMany } from 'typeorm';
-import { Module } from './module.entity';
-import { Nature } from './nature.entity';
-import { ApiModelProperty } from '@nestjs/swagger';
+import { Module } from '@entities/module.entity';
+import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
+import { Component } from './component.entity';
 
 @Entity()
 export class Specification {
@@ -12,9 +12,11 @@ export class Specification {
     @ApiModelProperty()
     name: string;
 
-    @OneToMany(() => Nature, nature => nature.specification)
-    natures: Nature[];
+    @OneToMany(() => Component, component => component.specification)
+    @ApiModelPropertyOptional()
+    components: Component[];
 
     @ManyToMany(() => Module)
+    @ApiModelPropertyOptional()
     modules: Module[];
 }

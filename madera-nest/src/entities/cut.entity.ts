@@ -1,4 +1,4 @@
-import { Module } from './module.entity';
+import { Module } from '@entities/module.entity';
 import { OneToMany, Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 import { ApiModelPropertyOptional, ApiModelProperty } from '@nestjs/swagger';
 
@@ -13,5 +13,6 @@ export class Cut {
     name: string;
 
     @OneToMany(() => Module, module => module.cut)
+    @ApiModelPropertyOptional()
     modules: Module[];
 }

@@ -1,10 +1,11 @@
 import { PrimaryGeneratedColumn, Column, ManyToMany, Entity, JoinTable, ManyToOne } from 'typeorm';
-import { Module } from './module.entity';
-import { TechnicalClause } from './technical-clause.entity';
-import { Nature } from './nature.entity';
-import { ComponentType } from './component-type.entity';
-import { Provider } from './provider.entity';
+import { Module } from '@entities/module.entity';
+import { TechnicalClause } from '@entities/technical-clause.entity';
+import { ComponentType } from '@entities/component-type.entity';
+import { Provider } from '@entities/provider.entity';
 import { ApiModelPropertyOptional, ApiModelProperty } from '@nestjs/swagger';
+import { Specification } from './specification.entity';
+import { Unit } from './unit.entity';
 
 @Entity()
 export class Component {
@@ -16,20 +17,15 @@ export class Component {
     @ApiModelProperty()
     name: string;
 
-    @ManyToMany(() => TechnicalClause)
+    @ManyToMany(() => TechnicalClause, {
+        eager: true,
+    })
     @JoinTable()
     @ApiModelPropertyOptional()
     technicalClauses: TechnicalClause[];
 
-    @ManyToOne(() => Nature, nature => nature.components, {
-        nullable: true,
-        eager: true
-    })
-    @ApiModelProperty()
-    nature: Nature;
-
     @ManyToOne(() => ComponentType, componentType => componentType.components, {
-        eager: true
+        eager: true,
     })
     @ApiModelProperty()
     componentType: ComponentType;
@@ -38,7 +34,22 @@ export class Component {
     @ApiModelProperty()
     modules: Module[];
 
-    @ManyToOne(() => Provider, provider => provider.components)
+    @ManyToOne(() => Provider, provider => provider.components, {
+        // eager: true,
+    })
     @ApiModelProperty()
     provider: Provider;
+
+    @ManyToOne(() => Specification, specification => specification.components, {
+        eager: true,
+    })
+    @ApiModelProperty()
+    specification: Specification;
+
+    @ManyToOne(() => Unit, unit => unit.components, {
+        eager: true,
+    })
+    @ApiModelProperty()
+    unit: Unit;
+
 }

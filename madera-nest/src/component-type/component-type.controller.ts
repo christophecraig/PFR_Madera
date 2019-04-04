@@ -1,8 +1,11 @@
-import { Controller, Get, Param, Post, Body } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Delete } from '@nestjs/common';
 import { ComponentTypeService } from './component-type.service';
-import { ComponentType } from 'src/entities/component-type.entity';
+import { ComponentType } from '@entities/component-type.entity';
+import { ApiUseTags } from '@nestjs/swagger';
+import { DeleteResult } from 'typeorm';
 
-@Controller('component')
+@ApiUseTags('component-type')
+@Controller('component-type')
 export class ComponentTypeController {
     constructor(private readonly componentTypeService: ComponentTypeService) {
 
@@ -21,5 +24,10 @@ export class ComponentTypeController {
     @Post()
     upsertOne(@Body() data: ComponentType): Promise<ComponentType> {
         return this.componentTypeService.upsertOne(data);
+    }
+
+    @Delete(':id')
+    delete(@Param('id') id: number): Promise<DeleteResult> {
+        return this.componentTypeService.deleteOne(id);
     }
 }

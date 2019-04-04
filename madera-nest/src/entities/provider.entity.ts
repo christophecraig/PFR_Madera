@@ -1,10 +1,11 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Component } from './component.entity';
-import { ApiModelProperty } from '@nestjs/swagger';
+import { Component } from '@entities/component.entity';
+import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
 
 @Entity()
 export class Provider {
     @PrimaryGeneratedColumn()
+    @ApiModelPropertyOptional()
     id: number;
 
     @Column()
@@ -27,6 +28,9 @@ export class Provider {
     @ApiModelProperty()
     description: string;
 
-    @OneToMany(() => Component, component => component.provider)
+    @OneToMany(() => Component, component => component.provider, {
+        eager: true,
+    })
+    @ApiModelPropertyOptional()
     components: Component[];
 }

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Insulation } from 'src/entities/insulation.entity';
+import { Insulation } from '@entities/insulation.entity';
 import { InsulationService } from './insulation.service';
 import { InsulationController } from './insulation.controller';
 

@@ -1,7 +1,9 @@
 import { Controller, Get, Param, Post, Body } from '@nestjs/common';
 import { SpecificationService } from './specification.service';
-import { Specification } from 'src/entities/specification.entity';
+import { Specification } from '@entities/specification.entity';
+import { ApiUseTags } from '@nestjs/swagger';
 
+@ApiUseTags('specification')
 @Controller('specification')
 export class SpecificationController {
     constructor(private readonly specificationService: SpecificationService) {

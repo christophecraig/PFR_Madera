@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { TechnicalClause } from 'src/entities/technical-clause.entity';
+import { TechnicalClause } from '@entities/technical-clause.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()

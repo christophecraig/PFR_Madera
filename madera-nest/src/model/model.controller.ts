@@ -1,7 +1,9 @@
 import { Controller, Get, Param, Post, Body } from '@nestjs/common';
 import { ModelService } from './model.service';
-import { Model } from 'src/entities/model.entity';
+import { Model } from '@entities/model.entity';
+import { ApiUseTags } from '@nestjs/swagger';
 
+@ApiUseTags('model')
 @Controller('model')
 export class ModelController {
     constructor(private readonly modelService: ModelService) {

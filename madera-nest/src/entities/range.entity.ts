@@ -1,12 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, JoinTable, ManyToOne } from 'typeorm';
-import { Model } from './model.entity';
-import { Module } from './module.entity';
-import { Quote } from './quote.entity';
-import { Insulation } from './insulation.entity';
-import { Cover } from './cover.entity';
-import { Frame } from './frame.entity';
-import { WoodFrame } from './wood-frame.entity';
-import { ApiModelProperty } from '@nestjs/swagger';
+import { Model } from '@entities/model.entity';
+import { Module } from '@entities/module.entity';
+import { Quote } from '@entities/quote.entity';
+import { Insulation } from '@entities/insulation.entity';
+import { Cover } from '@entities/cover.entity';
+import { Frame } from '@entities/frame.entity';
+import { WoodFrame } from '@entities/wood-frame.entity';
+import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
 
 @Entity()
 export class Range {
@@ -18,36 +18,46 @@ export class Range {
     name: string;
 
     @OneToMany(() => Model, model => model.range, {
-        eager: true
+        eager: true,
+        nullable: true,
     })
+    @ApiModelPropertyOptional()
     models: Model[];
 
-    @ManyToMany(() => Module)
+    @ManyToMany(() => Module, {
+        eager: true,
+    })
     @JoinTable()
+    @ApiModelPropertyOptional()
     modules: Module[];
 
-    @ManyToMany(() => Quote, {
-        nullable: true
+    @OneToMany(() => Quote, quote => quote.range, {
+        nullable: true,
     })
+    @ApiModelPropertyOptional()
     quotes: Quote[];
 
     @ManyToOne(() => Insulation, insulation => insulation.ranges, {
-        eager: true
+        eager: true,
     })
+    @ApiModelPropertyOptional()
     insulation: Insulation;
 
     @ManyToOne(() => Cover, cover => cover.ranges, {
-        eager: true
+        eager: true,
     })
+    @ApiModelPropertyOptional()
     cover: Cover;
 
     @ManyToOne(() => Frame, frame => frame.ranges, {
-        eager: true
+        eager: true,
     })
+    @ApiModelPropertyOptional()
     frame: Frame;
 
     @ManyToOne(() => WoodFrame, woodFrame => woodFrame.ranges, {
-        eager: true
+        eager: true,
     })
+    @ApiModelPropertyOptional()
     woodFrame: WoodFrame;
 }

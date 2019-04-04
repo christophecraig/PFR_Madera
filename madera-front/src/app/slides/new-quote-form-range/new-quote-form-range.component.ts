@@ -45,7 +45,7 @@ export class NewQuoteFormRangeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    fetch(`http://${environment.db.host}:${environment.db.port}/ranges`).then(response => {
+    fetch(`http://${environment.db.host}:${environment.db.port}/range`).then(response => {
       response.json().then(data => {
         console.log(data);
         this.ranges = data;

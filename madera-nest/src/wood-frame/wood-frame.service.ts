@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { WoodFrame } from 'src/entities/wood-frame.entity';
+import { WoodFrame } from '@entities/wood-frame.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()

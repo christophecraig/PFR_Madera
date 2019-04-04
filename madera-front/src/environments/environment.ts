@@ -7,7 +7,7 @@ const env = {
     production: false,
     db: {
         host: 'localhost',
-        port: 8081
+        port: 3000
     }
 };
 

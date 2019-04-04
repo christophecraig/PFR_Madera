@@ -1,10 +1,11 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
-import { Component } from './component.entity';
-import { ApiModelProperty } from '@nestjs/swagger';
+import { Component } from '@entities/component.entity';
+import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
 
 @Entity()
 export class TechnicalClause {
     @PrimaryGeneratedColumn()
+    @ApiModelPropertyOptional()
     id: number;
 
     @Column()
@@ -12,5 +13,6 @@ export class TechnicalClause {
     name: string;
 
     @ManyToMany(() => Component)
+    @ApiModelPropertyOptional()
     components: Component[];
 }

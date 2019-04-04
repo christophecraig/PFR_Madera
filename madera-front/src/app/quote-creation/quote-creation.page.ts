@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Quote } from '../models/Quote';
 import { IonSlides, IonContent } from '@ionic/angular';
-import { Module } from '../models/Module';
 import { environment } from '../../environments/environment';
-import { Range } from '../models/Range';
+
+import { Quote } from '@entities/quote.entity';
+import { Module } from '@entities/module.entity';
+import { Range } from '@entities/range.entity';
 
 @Component({
   selector: 'app-quote-creation',
@@ -29,7 +30,7 @@ export class QuoteCreationPage implements OnInit {
   async rangeChanged(range: Range) {
     console.log(range);
     this.quote.modules = [];
-    fetch(`http://${environment.db.host}:${environment.db.port}/ranges/${range.id}/modules`).then(response => {
+    fetch(`http://${environment.db.host}:${environment.db.port}/range/${range.id}`).then(response => {
       response.json().then(data => {
         console.log(data);
         this.modules = data;

@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Range } from './range.entity';
+import { Range } from '@entities/range.entity';
 import { ApiModelPropertyOptional, ApiModelProperty } from '@nestjs/swagger';
 
 @Entity()
@@ -13,5 +13,6 @@ export class Cover {
     name: string;
 
     @OneToMany(() => Range, range => range.cover)
+    @ApiModelPropertyOptional()
     ranges: Range[];
 }

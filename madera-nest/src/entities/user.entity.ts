@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, ManyToMany, JoinTable } from 'typeorm';
-import { Quote } from './quote.entity';
-import { Rank } from './rank.entity';
-import { Customer } from './customer.entity';
+import { Quote } from '@entities/quote.entity';
+import { Rank } from '@entities/rank.entity';
+import { Customer } from '@entities/customer.entity';
 import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
 
 @Entity()

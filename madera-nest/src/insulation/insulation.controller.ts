@@ -1,7 +1,9 @@
 import { Controller, Get, Param, Post, Body } from '@nestjs/common';
 import { InsulationService } from './insulation.service';
-import { Insulation } from 'src/entities/insulation.entity';
+import { Insulation } from '@entities/insulation.entity';
+import { ApiUseTags } from '@nestjs/swagger';
 
+@ApiUseTags('insulation')
 @Controller('insulation')
 export class InsulationController {
     constructor(private readonly insulationService: InsulationService) {

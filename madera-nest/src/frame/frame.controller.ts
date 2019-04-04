@@ -1,7 +1,9 @@
 import { Controller, Get, Param, Post, Body } from '@nestjs/common';
 import { FrameService } from './frame.service';
-import { Frame } from 'src/entities/frame.entity';
+import { Frame } from '@entities/frame.entity';
+import { ApiUseTags } from '@nestjs/swagger';
 
+@ApiUseTags('frame')
 @Controller('frame')
 export class FrameController {
     constructor(private readonly frameService: FrameService) {

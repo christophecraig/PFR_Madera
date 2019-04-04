@@ -17,7 +17,6 @@ import { WoodFrameModule } from './wood-frame/wood-frame.module';
 import { InsulationModule } from './insulation/insulation.module';
 import { ModelModule } from './model/model.module';
 import { ModuleModule } from './module/module.module';
-import { NatureModule } from './nature/nature.module';
 import { ProviderModule } from './provider/provider.module';
 import { RangeModule } from './range/range.module';
 import { RankModule } from './rank/rank.module';
@@ -29,26 +28,26 @@ import { UnitModule } from './unit/unit.module';
   imports: [
     EnvModule,
     DatabaseModule,
-    QuoteModule,
-    UserModule,
-    CustomerModule,
-    StateModule,
-    FrameModule,
-    CutModule,
-    CoverModule,
+
     ComponentTypeModule,
     ComponentModule,
-    WoodFrameModule,
+    CoverModule,
+    CustomerModule,
+    CutModule,
+    FrameModule,
     InsulationModule,
     ModelModule,
     ModuleModule,
-    NatureModule,
     ProviderModule,
+    QuoteModule,
     RangeModule,
     RankModule,
     SpecificationModule,
+    StateModule,
     TechnicalClauseModule,
     UnitModule,
+    UserModule,
+    WoodFrameModule,
   ],
   controllers: [
     AppController,

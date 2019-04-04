@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Rank } from 'src/entities/rank.entity';
+import { Rank } from '@entities/rank.entity';
 import { RankService } from './rank.service';
 import { RankController } from './rank.controller';
 

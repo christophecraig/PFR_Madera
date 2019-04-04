@@ -1,7 +1,9 @@
 import { Controller, Get, Param, Post, Body } from '@nestjs/common';
 import { TechnicalClauseService } from './technical-clause.service';
-import { TechnicalClause } from 'src/entities/technical-clause.entity';
+import { TechnicalClause } from '@entities/technical-clause.entity';
+import { ApiUseTags } from '@nestjs/swagger';
 
+@ApiUseTags('technical-clause')
 @Controller('technical-clause')
 export class TechnicalClauseController {
     constructor(private readonly technicalClauseService: TechnicalClauseService) {

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Frame } from 'src/entities/frame.entity';
+import { Frame } from '@entities/frame.entity';
 import { FrameService } from './frame.service';
 import { FrameController } from './frame.controller';
 

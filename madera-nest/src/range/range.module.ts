@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Range } from 'src/entities/range.entity';
+import { Range } from '@entities/range.entity';
 import { RangeService } from './range.service';
 import { RangeController } from './range.controller';
 

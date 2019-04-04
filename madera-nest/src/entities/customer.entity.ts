@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany } from 'typeorm';
-import { Quote } from './quote.entity';
-import { User } from './user.entity';
+import { Quote } from '@entities/quote.entity';
+import { User } from '@entities/user.entity';
 import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
 
 @Entity()
@@ -25,7 +25,11 @@ export class Customer {
     @ApiModelProperty()
     address: string;
 
-    @OneToMany(() => Quote, quote => quote.customer)
+    @OneToMany(() => Quote, quote => quote.customer, {
+        // eager: true,
+        nullable: true,
+    })
+    @ApiModelPropertyOptional()
     quotes: Quote[];
 
     @ManyToMany(() => User)

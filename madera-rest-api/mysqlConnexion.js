@@ -4,7 +4,8 @@ module.exports = {
   connection: mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : 'root',
-    database : 'madera'
+    password : '',
+    database : 'cesi_pfr_madera',
+    port     : 3307
   })
 }

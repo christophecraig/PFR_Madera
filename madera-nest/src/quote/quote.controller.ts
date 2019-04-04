@@ -1,7 +1,9 @@
 import { Controller, Get, Param, Post, Body } from '@nestjs/common';
-import { Quote } from 'src/entities/quote.entity';
+import { Quote } from '@entities/quote.entity';
 import { QuoteService } from './quote.service';
+import { ApiUseTags } from '@nestjs/swagger';
 
+@ApiUseTags('quote')
 @Controller('quote')
 export class QuoteController {
     constructor(private readonly quoteService: QuoteService) { }

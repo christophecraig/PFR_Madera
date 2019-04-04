@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ComponentType } from 'src/entities/component-type.entity';
-import { Repository } from 'typeorm';
+import { ComponentType } from '@entities/component-type.entity';
+import { Repository, DeleteResult } from 'typeorm';
 
 @Injectable()
 export class ComponentTypeService {
@@ -22,5 +22,9 @@ export class ComponentTypeService {
         let componentType = new ComponentType();
         componentType = this.componentTypeRepository.merge(componentType, data);
         return this.componentTypeRepository.save(componentType);
+    }
+
+    async deleteOne(id: number): Promise<DeleteResult> {
+        return this.componentTypeRepository.delete(id);
     }
 }

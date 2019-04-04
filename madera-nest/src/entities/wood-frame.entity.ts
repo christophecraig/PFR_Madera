@@ -1,10 +1,11 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Range } from './range.entity';
-import { ApiModelProperty } from '@nestjs/swagger';
+import { Range } from '@entities/range.entity';
+import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
 
 @Entity()
 export class WoodFrame {
     @PrimaryGeneratedColumn()
+    @ApiModelPropertyOptional()
     id: number;
 
     @Column()
@@ -12,5 +13,6 @@ export class WoodFrame {
     name: string;
 
     @OneToMany(() => Range, range => range.woodFrame)
+    @ApiModelPropertyOptional()
     ranges: Range[];
 }
