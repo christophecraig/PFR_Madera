@@ -3,8 +3,8 @@ import { Cut } from '@entities/cut.entity';
 import { Model } from '@entities/model.entity';
 import { Component } from '@entities/component.entity';
 import { Range } from '@entities/range.entity';
-import { Specification } from './specification.entity';
-import { Unit } from './unit.entity';
+import { Specification } from '@entities/specification.entity';
+import { Unit } from '@entities/unit.entity';
 
 export class Module {
     id: number;
@@ -24,5 +24,4 @@ export class Module {
     components: Component[];
 
     ranges: Range[];
-
 }

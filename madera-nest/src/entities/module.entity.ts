@@ -5,8 +5,8 @@ import { Model } from '@entities/model.entity';
 import { Component } from '@entities/component.entity';
 import { Range } from '@entities/range.entity';
 import { ApiModelPropertyOptional, ApiModelProperty } from '@nestjs/swagger';
-import { Specification } from './specification.entity';
-import { Unit } from './unit.entity';
+import { Specification } from '@entities/specification.entity';
+import { Unit } from '@entities/unit.entity';
 
 @Entity()
 export class Module {

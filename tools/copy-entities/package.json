@@ -1,0 +1,14 @@
+{
+    "name": "@styx/copy-entities",
+    "version": "0.0.0",
+    "main": "index.js",
+    "scripts": {
+        "copy:entities": "node ./index.js --from=\"../../madera-nest/src/entities\" --to=\"../../madera-front/src/entities\"",
+        "copy:entities:r": "node ./index.js --from=\"../../madera-nest/src/entities\" --to=\"../../madera-front/src/entities\" --recursive",
+        "copy": "npm run copy:entities:r"
+    },
+    "dependencies": {
+        "fs-extra": "^7.0.1",
+        "minimist": "^1.2.0"
+    }
+}

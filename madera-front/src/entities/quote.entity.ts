@@ -22,5 +22,4 @@ export class Quote {
     modules?: Module[];
 
     range?: Range;
-
 }

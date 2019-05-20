@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren: '../component-type/component-type.module#ComponentTypePageModule'
   },
   {
+    path: 'component',
+    loadChildren: '../component/component.module#ComponentPageModule'
+  },
+  {
     path: '',
     component: ConfigurationHomePage
   },

@@ -2,8 +2,8 @@ import { Module } from '@entities/module.entity';
 import { TechnicalClause } from '@entities/technical-clause.entity';
 import { ComponentType } from '@entities/component-type.entity';
 import { Provider } from '@entities/provider.entity';
-import { Specification } from './specification.entity';
-import { Unit } from './unit.entity';
+import { Specification } from '@entities/specification.entity';
+import { Unit } from '@entities/unit.entity';
 
 export class Component {
     id: number;
@@ -21,5 +21,4 @@ export class Component {
     specification: Specification;
 
     unit: Unit;
-
 }

@@ -4,8 +4,8 @@ import { TechnicalClause } from '@entities/technical-clause.entity';
 import { ComponentType } from '@entities/component-type.entity';
 import { Provider } from '@entities/provider.entity';
 import { ApiModelPropertyOptional, ApiModelProperty } from '@nestjs/swagger';
-import { Specification } from './specification.entity';
-import { Unit } from './unit.entity';
+import { Specification } from '@entities/specification.entity';
+import { Unit } from '@entities/unit.entity';
 
 @Entity()
 export class Component {

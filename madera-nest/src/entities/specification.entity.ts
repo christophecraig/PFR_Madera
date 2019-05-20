@@ -1,7 +1,7 @@
 import { PrimaryGeneratedColumn, Column, ManyToMany, Entity, OneToMany } from 'typeorm';
 import { Module } from '@entities/module.entity';
 import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
-import { Component } from './component.entity';
+import { Component } from '@entities/component.entity';
 
 @Entity()
 export class Specification {

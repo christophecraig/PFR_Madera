@@ -1,5 +1,5 @@
 import { Module } from '@entities/module.entity';
-import { Component } from './component.entity';
+import { Component } from '@entities/component.entity';
 
 export class Specification {
     id: number;
