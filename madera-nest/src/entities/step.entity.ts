@@ -12,6 +12,10 @@ export class Step {
     @ApiModelProperty()
     name: string;
 
+    @Column()
+    @ApiModelProperty()
+    completion: number
+
     @OneToMany(() => Quote, quote => quote.step)
     @ApiModelPropertyOptional()
     quotes: Quote[];
