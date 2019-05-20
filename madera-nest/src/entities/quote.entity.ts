@@ -5,6 +5,7 @@ import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
 import { Module } from '@entities/module.entity';
 import { Range } from '@entities/range.entity';
 import { State } from '@entities/state.entity';
+import { Step } from '@entities/step.entity';
 
 import { IsDate } from 'class-validator';
 
@@ -59,5 +60,11 @@ export class Quote {
     })
     @ApiModelPropertyOptional()
     range?: Range;
+
+    @ManyToOne(() => Step, step => step.quotes, {
+        eager: true,
+    })
+    @ApiModelProperty()
+    step: Step;
 
 }

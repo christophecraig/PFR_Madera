@@ -23,12 +23,12 @@ import { RankModule } from './rank/rank.module';
 import { SpecificationModule } from './specification/specification.module';
 import { TechnicalClauseModule } from './technical-clause/technical-clause.module';
 import { UnitModule } from './unit/unit.module';
+import { StepModule } from './step/step.module';
 
 @Module({
   imports: [
     EnvModule,
     DatabaseModule,
-
     ComponentTypeModule,
     ComponentModule,
     CoverModule,
@@ -44,6 +44,7 @@ import { UnitModule } from './unit/unit.module';
     RankModule,
     SpecificationModule,
     StateModule,
+    StepModule,
     TechnicalClauseModule,
     UnitModule,
     UserModule,
