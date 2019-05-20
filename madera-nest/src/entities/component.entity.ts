@@ -17,6 +17,10 @@ export class Component {
     @ApiModelProperty()
     name: string;
 
+    @Column()
+    @ApiModelProperty()
+    price: number;
+
     @ManyToMany(() => TechnicalClause, {
         eager: true,
     })
