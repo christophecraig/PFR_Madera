@@ -16,7 +16,9 @@
           <ion-label position="floating" color="primary">Modèle de la gamme</ion-label>
           <ion-select name="idModel" value="0" text (ionChange)="onModelSelect($event)" required>
             <ion-select-option value="0">Aucun modèle</ion-select-option>
-            <ion-select-option *ngFor="let model of quote.range.models" value="{{model.id}}">{{model.name}}</ion-select-option>
+            <ng-container *ngIf="quote.range">
+              <ion-select-option *ngFor="let model of quote.range.models" value="{{model.id}}">{{model.name}}</ion-select-option>
+            </ng-container>
           </ion-select>
         </ion-item>
       </ng-template>

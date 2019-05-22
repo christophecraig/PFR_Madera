@@ -17,6 +17,38 @@ const routes: Routes = [
     loadChildren: '../component/component.module#ComponentPageModule'
   },
   {
+    path: 'range',
+    loadChildren: '../range/range.module#RangePageModule'
+  },
+  {
+    path: 'provider',
+    loadChildren: '../provider/provider.module#ProviderPageModule'
+  },
+  {
+    path: 'specification',
+    loadChildren: '../specification/specification.module#SpecificationPageModule'
+  },
+  {
+    path: 'unit',
+    loadChildren: '../unit/unit.module#UnitPageModule'
+  },
+  {
+    path: 'insulation',
+    loadChildren: '../insulation/insulation.module#InsulationPageModule'
+  },
+  {
+    path: 'cover',
+    loadChildren: '../cover/cover.module#CoverPageModule'
+  },
+  {
+    path: 'technical-clause',
+    loadChildren: '../technical-clause/technical-clause.module#TechnicalClausePageModule'
+  },
+  {
+    path: 'cut',
+    loadChildren: '../cut/cut.module#CutPageModule'
+  },
+  {
     path: '',
     component: ConfigurationHomePage
   },
@@ -31,4 +63,4 @@ const routes: Routes = [
   ],
   declarations: [ConfigurationHomePage]
 })
-export class ConfigurationHomePageModule {}
+export class ConfigurationHomePageModule { }

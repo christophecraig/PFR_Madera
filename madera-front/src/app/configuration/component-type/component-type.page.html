@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/configuration"></ion-back-button>
     </ion-buttons>
-    <ion-title>component-type</ion-title>
+    <ion-title>Familles de composants</ion-title>
     <ion-buttons slot="primary">
       <ion-button (click)="addComponentType()" color="primary">
         <ion-icon slot="icon-only" name="add"></ion-icon>
@@ -15,7 +15,7 @@
 <ion-content>
   <ion-card>
     <ion-card-header *ngIf="!componentTypes || componentTypes.length === 0">
-      <ion-card-subtitle>Il n'y a pas encore de famille de composant</ion-card-subtitle>
+      <ion-card-subtitle>Il n'y a pas encore de famille de composants</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content *ngIf="componentTypes && componentTypes.length !== 0">
       <ion-list>

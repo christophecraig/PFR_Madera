@@ -30,7 +30,7 @@ export class QuoteCreationPage implements OnInit {
   async rangeChanged(range: Range) {
     console.log(range);
     this.quote.modules = [];
-    fetch(`http://${environment.db.host}:${environment.db.port}/range/${range.id}`).then(response => {
+    fetch(`//${environment.db.host}:${environment.db.port}/range/${range.id}`).then(response => {
       response.json().then(data => {
         console.log(data);
         this.modules = data;

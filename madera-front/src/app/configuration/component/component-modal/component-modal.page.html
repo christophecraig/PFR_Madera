@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="secondary">
-    <ion-title>{{isEdit ? 'Modifier' : 'Ajouter'}} component type</ion-title>
+    <ion-title>{{isEdit ? 'Modifier' : 'Ajouter'}} composant</ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="dismiss()">
         <ion-icon slot="icon-only" name="close"></ion-icon>
@@ -17,15 +17,57 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>component</ion-card-title>
+      <ion-card-title>Composant</ion-card-title>
       <ion-card-subtitle>* champs requis</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
-      <form #componentTypeForm="ngForm">
+      <form #componentForm="ngForm">
         <ion-list>
-          <ion-item>
+          <ion-item lines="inset">
             <ion-label position="floating" color="primary">Nom*</ion-label>
-            <ion-input type="text" inputmode="text" name="name" [(ngModel)]="componentType.name" required></ion-input>
+            <ion-input type="text" inputmode="text" name="name" [(ngModel)]="component.name" required></ion-input>
+          </ion-item>
+          <ion-item lines="inset">
+            <ion-label position="floating" color="primary">Famille</ion-label>
+            <ion-select name="componentTypeId" [(ngModel)]="component.componentType" [compareWith]="compareWith" required>
+              <ion-select-option *ngFor="let componentType of componentTypes"
+                [selected]="componentType.id === (component.componentType && component.componentType.id)" [value]="componentType">
+                {{componentType.name}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item lines="inset">
+            <ion-label position="floating" color="primary">Fournisseur</ion-label>
+            <ion-select name="providerId" [(ngModel)]="component.provider" [compareWith]="compareWith" required>
+              <ion-select-option *ngFor="let provider of providers"
+                [selected]="provider.id === (component.provider && component.provider.id)" [value]="provider">
+                {{provider.businessName}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item lines="inset">
+            <ion-label position="floating" color="primary">Spécification</ion-label>
+            <ion-select name="specificationId" [(ngModel)]="component.specification" [compareWith]="compareWith" required>
+              <ion-select-option *ngFor="let specification of specifications"
+                [selected]="specification.id === (component.specification && component.specification.id)" [value]="specification">
+                {{specification.name}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item lines="inset">
+            <ion-label position="floating" color="primary">Unité</ion-label>
+            <ion-select name="unitId" [(ngModel)]="component.unit" [compareWith]="compareWith" required>
+              <ion-select-option *ngFor="let unit of units" [selected]="unit.id === (component.unit && component.unit.id)" [value]="unit">
+                {{unit.name}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item lines="inset">
+            <ion-label position="floating" color="primary">Prix en €*</ion-label>
+            <ion-input type="number" inputmode="number" name="price" [(ngModel)]="component.price" required></ion-input>
+          </ion-item>
+          <ion-item lines="inset" detail (click)="editTechnicalClauses()">
+            <ion-label color="primary">Clauses techniques</ion-label>
           </ion-item>
         </ion-list>
       </form>

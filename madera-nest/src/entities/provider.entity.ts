@@ -29,7 +29,7 @@ export class Provider {
     description: string;
 
     @OneToMany(() => Component, component => component.provider, {
-        eager: true,
+        // eager: true,
     })
     @ApiModelPropertyOptional()
     components: Component[];

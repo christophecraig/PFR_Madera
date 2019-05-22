@@ -39,7 +39,7 @@ export class Component {
     modules: Module[];
 
     @ManyToOne(() => Provider, provider => provider.components, {
-        // eager: true,
+        eager: true,
     })
     @ApiModelProperty()
     provider: Provider;

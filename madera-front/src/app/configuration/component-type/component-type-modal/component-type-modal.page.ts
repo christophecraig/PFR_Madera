@@ -39,7 +39,7 @@ export class ComponentTypeModalPage implements OnInit {
 
   async onSubmit() {
     console.log('submitting...');
-    fetch(`http://${environment.db.host}:${environment.db.port}/component-type/`, {
+    fetch(`//${environment.db.host}:${environment.db.port}/component-type/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

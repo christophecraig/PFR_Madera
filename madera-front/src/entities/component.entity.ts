@@ -10,6 +10,8 @@ export class Component {
 
     name: string;
 
+    price: number;
+
     technicalClauses: TechnicalClause[];
 
     componentType: ComponentType;

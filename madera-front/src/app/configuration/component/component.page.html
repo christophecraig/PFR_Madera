@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/configuration"></ion-back-button>
     </ion-buttons>
-    <ion-title>component</ion-title>
+    <ion-title>Composants</ion-title>
     <ion-buttons slot="primary">
       <ion-button (click)="addComponent()" color="primary">
         <ion-icon slot="icon-only" name="add"></ion-icon>
@@ -14,18 +14,18 @@
 
 <ion-content>
   <ion-card>
-    <ion-card-header *ngIf="!componentTypes || componentTypes.length === 0">
-      <ion-card-subtitle>Il n'y a pas encore de famille de composant</ion-card-subtitle>
+    <ion-card-header *ngIf="!components || components.length === 0">
+      <ion-card-subtitle>Il n'y a pas encore de composant</ion-card-subtitle>
     </ion-card-header>
-    <ion-card-content *ngIf="componentTypes && componentTypes.length !== 0">
+    <ion-card-content *ngIf="components && components.length !== 0">
       <ion-list>
-        <ion-item *ngFor="let componentType of componentTypes">
-          <ion-label>{{componentType.name}}</ion-label>
+        <ion-item *ngFor="let component of components">
+          <ion-label>{{component.name}}</ion-label>
           <ion-buttons slot="end">
-            <ion-button fill="clear" color="primary" (click)="editComponent(componentType)">
+            <ion-button fill="clear" color="primary" (click)="editComponent(component)">
               <ion-icon slot="icon-only" name="create"></ion-icon>
             </ion-button>
-            <ion-button fill="clear" color="primary" (click)="deleteComponentPresentAlert(componentType)">
+            <ion-button fill="clear" color="primary" (click)="deleteComponentPresentAlert(component)">
               <ion-icon slot="icon-only" name="trash"></ion-icon>
             </ion-button>
           </ion-buttons>

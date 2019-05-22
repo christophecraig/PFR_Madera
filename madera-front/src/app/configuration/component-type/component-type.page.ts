@@ -20,7 +20,7 @@ export class ComponentTypePage implements OnInit {
   ) { }
 
   loadModel() {
-    fetch(`http://${environment.db.host}:${environment.db.port}/component-type/`).then(response => {
+    fetch(`//${environment.db.host}:${environment.db.port}/component-type/`).then(response => {
       response.json().then(data => {
         console.log(data);
         this.componentTypes = data;
@@ -62,7 +62,7 @@ export class ComponentTypePage implements OnInit {
       }, {
         text: 'OUI',
         handler: async () => {
-          fetch(`http://${environment.db.host}:${environment.db.port}/component-type/${componentType.id}`, {
+          fetch(`//${environment.db.host}:${environment.db.port}/component-type/${componentType.id}`, {
             method: 'DELETE'
           }).then(response => {
             response.json().then(async data => {

@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/configuration"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Fournisseurs</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="addProvider()" color="primary">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header *ngIf="!providers || providers.length === 0">
+      <ion-card-subtitle>Il n'y a pas encore de fournisseur</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content *ngIf="providers && providers.length !== 0">
+      <ion-list>
+        <ion-item *ngFor="let provider of providers">
+          <ion-label>{{provider.businessName}}</ion-label>
+          <ion-buttons slot="end">
+            <ion-button fill="clear" color="primary" (click)="editProvider(provider)">
+              <ion-icon slot="icon-only" name="create"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" color="primary" (click)="deleteProviderPresentAlert(provider)">
+              <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

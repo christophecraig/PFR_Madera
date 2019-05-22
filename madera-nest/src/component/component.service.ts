@@ -21,6 +21,13 @@ export class ComponentService {
     async upsertOne(data: Component): Promise<Component> {
         let component = new Component();
         component = this.componentRepository.merge(component, data);
+        if (data.technicalClauses) {
+            // if (data.technicalClauses.length > 0) {
+                component.technicalClauses = data.technicalClauses;
+            // } else {
+            //     component.technicalClauses = [];
+            // }
+        }
         return this.componentRepository.save(component);
     }
 }

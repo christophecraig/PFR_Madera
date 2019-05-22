@@ -11,7 +11,7 @@ import { ComponentModalPage } from './component-modal/component-modal.page';
 })
 export class ComponentPage implements OnInit {
 
-  componentTypes: Component[];
+  components: Component[];
   isEdit = false;
 
   constructor(
@@ -20,10 +20,10 @@ export class ComponentPage implements OnInit {
   ) { }
 
   loadModel() {
-    fetch(`http://${environment.db.host}:${environment.db.port}/component/`).then(response => {
+    fetch(`//${environment.db.host}:${environment.db.port}/component/`).then(response => {
       response.json().then(data => {
         console.log(data);
-        this.componentTypes = data;
+        this.components = data;
       });
     });
   }
@@ -42,10 +42,10 @@ export class ComponentPage implements OnInit {
     return await modal.present();
   }
 
-  async editComponent(componentType) {
+  async editComponent(component) {
     const modal = await this.modalController.create({
       component: ComponentModalPage,
-      componentProps: componentType,
+      componentProps: component,
     });
     modal.onDidDismiss().then(() => {
       this.loadModel();
@@ -53,16 +53,16 @@ export class ComponentPage implements OnInit {
     return await modal.present();
   }
 
-  async deleteComponentPresentAlert(componentType: Component) {
+  async deleteComponentPresentAlert(component: Component) {
     const alert = await this.alertController.create({
-      message: `Voulez-vous vraiment supprimer votre componentType "${componentType.name}" ?`,
+      message: `Voulez-vous vraiment supprimer votre component "${component.name}" ?`,
       buttons: [{
         text: 'NON',
         role: 'cancel',
       }, {
         text: 'OUI',
         handler: async () => {
-          fetch(`http://${environment.db.host}:${environment.db.port}/component/${componentType.id}`, {
+          fetch(`//${environment.db.host}:${environment.db.port}/component/${component.id}`, {
             method: 'DELETE'
           }).then(response => {
             response.json().then(async data => {
