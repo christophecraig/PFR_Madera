@@ -21,7 +21,9 @@ export class Model {
     @ApiModelProperty()
     modules: Module[];
 
-    @ManyToOne(() => Range, range => range.models)
+    @ManyToOne(() => Range, range => range.models, {
+        // eager: true,
+    })
     @ApiModelProperty()
     range: Range;
 }

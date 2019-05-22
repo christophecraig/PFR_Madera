@@ -11,11 +11,15 @@ export class RangeService {
     ) { }
 
     async findAll(): Promise<Range[]> {
-        return this.rangeRepository.find();
+        return this.rangeRepository.find({
+            relations: ['models'],
+        });
     }
 
     async findOne(id: number): Promise<Range> {
-        return this.rangeRepository.findOne(id);
+        return this.rangeRepository.findOne(id, {
+            relations: ['models', 'modules'],
+        });
     }
 
     async upsertOne(data: Range): Promise<Range> {

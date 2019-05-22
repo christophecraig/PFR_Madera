@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>{{isEdit ? 'Modifier' : 'Ajouter'}} module</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button color="primary" (click)="onSubmit()">
+        <ion-label>{{isEdit ? 'ÉDITER' : 'CRÉER'}}</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Module</ion-card-title>
+      <ion-card-subtitle>* champs requis</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <form #moduleForm="ngForm">
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating" color="primary">Nom*</ion-label>
+            <ion-input type="text" inputmode="text" name="name" [(ngModel)]="module.name" required></ion-input>
+          </ion-item>
+          <ion-item lines="inset">
+            <ion-label position="floating" color="primary">Coupe</ion-label>
+            <ion-select name="cutId" [(ngModel)]="module.cut" [compareWith]="compareWith" required>
+              <ion-select-option *ngFor="let cut of cuts"
+                [selected]="cut.id === (module.cut && module.cut.id)" [value]="cut">
+                {{cut.name}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item lines="inset">
+            <ion-label position="floating" color="primary">Spécification</ion-label>
+            <ion-select name="specificationId" [(ngModel)]="module.specification" [compareWith]="compareWith" required>
+              <ion-select-option *ngFor="let specification of specifications"
+                [selected]="specification.id === (module.specification && module.specification.id)" [value]="specification">
+                {{specification.name}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item lines="inset">
+            <ion-label position="floating" color="primary">Unité</ion-label>
+            <ion-select name="unitId" [(ngModel)]="module.unit" [compareWith]="compareWith" required>
+              <ion-select-option *ngFor="let unit of units" [selected]="unit.id === (module.unit && module.unit.id)" [value]="unit">
+                {{unit.name}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item lines="inset" detail (click)="editComponents()">
+            <ion-label color="primary">Composants</ion-label>
+          </ion-item>
+        </ion-list>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

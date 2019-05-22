@@ -49,6 +49,26 @@ const routes: Routes = [
     loadChildren: '../cut/cut.module#CutPageModule'
   },
   {
+    path: 'frame',
+    loadChildren: '../frame/frame.module#FramePageModule'
+  },
+  {
+    path: 'wood-frame',
+    loadChildren: '../wood-frame/wood-frame.module#WoodFramePageModule'
+  },
+  {
+    path: 'customer',
+    loadChildren: '../customer/customer.module#CustomerPageModule'
+  },
+  {
+    path: 'module',
+    loadChildren: '../module/module.module#ModulePageModule'
+  },
+  {
+    path: 'model',
+    loadChildren: '../model/model.module#ModelPageModule'
+  },
+  {
     path: '',
     component: ConfigurationHomePage
   },

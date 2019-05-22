@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/configuration"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Clients</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="addCustomer()" color="primary">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header *ngIf="!customers || customers.length === 0">
+      <ion-card-subtitle>Il n'y a pas encore de client</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content *ngIf="customers && customers.length !== 0">
+      <ion-list>
+        <ion-item *ngFor="let customer of customers">
+          <ion-label>{{customer.firstName}} {{customer.lastName}}</ion-label>
+          <ion-buttons slot="end">
+            <ion-button fill="clear" color="primary" (click)="editCustomer(customer)">
+              <ion-icon slot="icon-only" name="create"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" color="primary" (click)="deleteCustomerPresentAlert(customer)">
+              <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

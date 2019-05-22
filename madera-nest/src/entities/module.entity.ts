@@ -25,7 +25,6 @@ export class Module {
     @ManyToOne(() => Cut, cut => cut.modules, {
         eager: true,
     })
-    @JoinColumn()
     @ApiModelProperty()
     cut: Cut;
 

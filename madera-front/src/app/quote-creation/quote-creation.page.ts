@@ -33,11 +33,13 @@ export class QuoteCreationPage implements OnInit {
     fetch(`//${environment.db.host}:${environment.db.port}/range/${range.id}`).then(response => {
       response.json().then(data => {
         console.log(data);
-        this.modules = data;
+        this.modules = data.modules;
       });
     });
 
   }
+
+  // TODO: Lien Components > Modules > Models > Ranges
 
   async changeSlide(forward: boolean) {
     await this.content.scrollToPoint(0, 0);

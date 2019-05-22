@@ -18,7 +18,6 @@ export class Range {
     name: string;
 
     @OneToMany(() => Model, model => model.range, {
-        eager: true,
         nullable: true,
     })
     @ApiModelPropertyOptional()
