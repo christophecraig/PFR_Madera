@@ -1,4 +1,4 @@
-import { PrimaryGeneratedColumn, Column, ManyToMany, Entity, OneToMany } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, ManyToMany, Entity, OneToMany, JoinTable } from 'typeorm';
 import { Module } from '@entities/module.entity';
 import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
 import { Component } from '@entities/component.entity';
@@ -17,6 +17,7 @@ export class Specification {
     components: Component[];
 
     @ManyToMany(() => Module)
+    @JoinTable()
     @ApiModelPropertyOptional()
     modules: Module[];
 }

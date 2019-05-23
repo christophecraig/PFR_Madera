@@ -1,7 +1,8 @@
-import { Controller, Get, Param, Post, Body } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Delete } from '@nestjs/common';
 import { StepService } from './step.service';
 import { Step } from '@entities/step.entity';
 import { ApiUseTags } from '@nestjs/swagger';
+import { DeleteResult } from 'typeorm';
 
 @ApiUseTags('step')
 @Controller('step')
@@ -23,5 +24,10 @@ export class StepController {
     @Post()
     upsertOne(@Body() data: Step): Promise<Step> {
         return this.stepService.upsertOne(data);
+    }
+
+    @Delete(':id')
+    deleteOne(@Param('id') id: number): Promise<DeleteResult> {
+        return this.stepService.deleteOne(id);
     }
 }

@@ -1,7 +1,8 @@
-import { Controller, Get, Param, Post, Body } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Delete } from '@nestjs/common';
 import { SpecificationService } from './specification.service';
 import { Specification } from '@entities/specification.entity';
 import { ApiUseTags } from '@nestjs/swagger';
+import { DeleteResult } from 'typeorm';
 
 @ApiUseTags('specification')
 @Controller('specification')
@@ -23,5 +24,10 @@ export class SpecificationController {
     @Post()
     upsertOne(@Body() data: Specification): Promise<Specification> {
         return this.specificationService.upsertOne(data);
+    }
+
+    @Delete(':id')
+    deleteOne(@Param('id') id: number): Promise<DeleteResult> {
+        return this.specificationService.deleteOne(id);
     }
 }

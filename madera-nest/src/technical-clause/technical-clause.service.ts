@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TechnicalClause } from '@entities/technical-clause.entity';
-import { Repository } from 'typeorm';
+import { Repository, DeleteResult } from 'typeorm';
 
 @Injectable()
 export class TechnicalClauseService {
@@ -22,5 +22,9 @@ export class TechnicalClauseService {
         let technicalClause = new TechnicalClause();
         technicalClause = this.technicalClauseRepository.merge(technicalClause, data);
         return this.technicalClauseRepository.save(technicalClause);
+    }
+
+    async deleteOne(id: number): Promise<DeleteResult> {
+        return this.technicalClauseRepository.delete(id);
     }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Range } from '@entities/range.entity';
-import { Repository } from 'typeorm';
+import { Repository, DeleteResult } from 'typeorm';
 
 @Injectable()
 export class RangeService {
@@ -26,5 +26,9 @@ export class RangeService {
         let range = new Range();
         range = this.rangeRepository.merge(range, data);
         return this.rangeRepository.save(range);
+    }
+
+    async deleteOne(id: number): Promise<DeleteResult> {
+        return this.rangeRepository.delete(id);
     }
 }

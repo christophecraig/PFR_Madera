@@ -1,7 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, JoinTable } from 'typeorm';
 import { Quote } from '@entities/quote.entity';
 import { User } from '@entities/user.entity';
 import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
+import { JoinAttribute } from 'typeorm/query-builder/JoinAttribute';
 
 @Entity()
 export class Customer {
@@ -33,6 +34,7 @@ export class Customer {
     quotes: Quote[];
 
     @ManyToMany(() => User)
+    @JoinTable()
     @ApiModelProperty()
     users: User[];
 }

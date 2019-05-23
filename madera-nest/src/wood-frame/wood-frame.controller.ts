@@ -1,7 +1,8 @@
-import { Controller, Get, Param, Post, Body } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Delete } from '@nestjs/common';
 import { WoodFrameService } from './wood-frame.service';
 import { WoodFrame } from '@entities/wood-frame.entity';
 import { ApiUseTags } from '@nestjs/swagger';
+import { DeleteResult } from 'typeorm';
 
 @ApiUseTags('wood-frame')
 @Controller('wood-frame')
@@ -23,5 +24,10 @@ export class WoodFrameController {
     @Post()
     upsertOne(@Body() data: WoodFrame): Promise<WoodFrame> {
         return this.woodFrameService.upsertOne(data);
+    }
+
+    @Delete(':id')
+    deleteOne(@Param('id') id: number): Promise<DeleteResult> {
+        return this.woodFrameService.deleteOne(id);
     }
 }

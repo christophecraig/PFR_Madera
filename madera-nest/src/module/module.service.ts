@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Module } from '@entities/module.entity';
-import { Repository } from 'typeorm';
+import { Repository, DeleteResult } from 'typeorm';
 
 @Injectable()
 export class ModuleService {
@@ -24,10 +24,8 @@ export class ModuleService {
         return this.moduleRepository.save(module);
     }
 
-    async deleteOne(id: number): Promise<void> {
-        const module = await this.moduleRepository.findOne(id);
-        await this.moduleRepository.remove(module);
-        return;
+    async deleteOne(id: number): Promise<DeleteResult> {
+        return this.moduleRepository.delete(id);
     }
 
 }

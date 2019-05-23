@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Specification } from '@entities/specification.entity';
-import { Repository } from 'typeorm';
+import { Repository, DeleteResult } from 'typeorm';
 
 @Injectable()
 export class SpecificationService {
@@ -22,5 +22,9 @@ export class SpecificationService {
         let specification = new Specification();
         specification = this.specificationRepository.merge(specification, data);
         return this.specificationRepository.save(specification);
+    }
+
+    async deleteOne(id: number): Promise<DeleteResult> {
+        return this.specificationRepository.delete(id);
     }
 }

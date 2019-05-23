@@ -1,7 +1,8 @@
-import { Controller, Get, Param, Post, Body } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Delete } from '@nestjs/common';
 import { RangeService } from './range.service';
 import { Range } from '@entities/range.entity';
 import { ApiUseTags } from '@nestjs/swagger';
+import { DeleteResult } from 'typeorm';
 
 @ApiUseTags('range')
 @Controller('range')
@@ -23,5 +24,10 @@ export class RangeController {
     @Post()
     upsertOne(@Body() data: Range): Promise<Range> {
         return this.rangeService.upsertOne(data);
+    }
+
+    @Delete(':id')
+    deleteOne(@Param('id') id: number): Promise<DeleteResult> {
+        return this.rangeService.deleteOne(id);
     }
 }

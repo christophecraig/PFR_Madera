@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { WoodFrame } from '@entities/wood-frame.entity';
-import { Repository } from 'typeorm';
+import { Repository, DeleteResult } from 'typeorm';
 
 @Injectable()
 export class WoodFrameService {
@@ -22,5 +22,9 @@ export class WoodFrameService {
         let woodFrame = new WoodFrame();
         woodFrame = this.woodFrameRepository.merge(woodFrame, data);
         return this.woodFrameRepository.save(woodFrame);
+    }
+
+    async deleteOne(id: number): Promise<DeleteResult> {
+        return this.woodFrameRepository.delete(id);
     }
 }

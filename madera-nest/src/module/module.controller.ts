@@ -2,6 +2,7 @@ import { Controller, Get, Param, Post, Body, Delete } from '@nestjs/common';
 import { ModuleService } from './module.service';
 import { Module } from '@entities/module.entity';
 import { ApiUseTags } from '@nestjs/swagger';
+import { DeleteResult } from 'typeorm';
 
 @ApiUseTags('module')
 @Controller('module')
@@ -26,7 +27,7 @@ export class ModuleController {
     }
 
     @Delete(':id')
-    deleteOne(@Param('id') id: number): Promise<void> {
+    deleteOne(@Param('id') id: number): Promise<DeleteResult> {
         return this.moduleService.deleteOne(id);
     }
 }

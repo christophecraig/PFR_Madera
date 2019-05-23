@@ -1,7 +1,8 @@
-import { Controller, Get, Param, Post, Body } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Delete } from '@nestjs/common';
 import { RankService } from './rank.service';
 import { Rank } from '@entities/rank.entity';
 import { ApiUseTags } from '@nestjs/swagger';
+import { DeleteResult } from 'typeorm';
 
 @ApiUseTags('rank')
 @Controller('rank')
@@ -23,5 +24,10 @@ export class RankController {
     @Post()
     upsertOne(@Body() data: Rank): Promise<Rank> {
         return this.rankService.upsertOne(data);
+    }
+
+    @Delete(':id')
+    deleteOne(@Param('id') id: number): Promise<DeleteResult> {
+        return this.rankService.deleteOne(id);
     }
 }

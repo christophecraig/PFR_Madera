@@ -35,6 +35,7 @@ export class Component {
     componentType: ComponentType;
 
     @ManyToMany(() => Module)
+    @JoinTable()
     @ApiModelProperty()
     modules: Module[];
 
