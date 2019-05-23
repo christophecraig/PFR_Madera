@@ -3,6 +3,7 @@ import { User } from '@entities/user.entity';
 import { Module } from '@entities/module.entity';
 import { Range } from '@entities/range.entity';
 import { State } from '@entities/state.entity';
+import { Step } from '@entities/step.entity';
 
 export class Quote {
     id: number;
@@ -19,7 +20,9 @@ export class Quote {
 
     user: User;
 
-    modules?: Module[];
+    modules: Module[];
 
     range?: Range;
+
+    step: Step;
 }

@@ -69,6 +69,10 @@ const routes: Routes = [
     loadChildren: '../model/model.module#ModelPageModule'
   },
   {
+    path: 'step',
+    loadChildren: '../step/step.module#StepPageModule'
+  },
+  {
     path: '',
     component: ConfigurationHomePage
   },

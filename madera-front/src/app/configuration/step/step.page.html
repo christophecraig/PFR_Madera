@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/configuration"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Étapes</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="addStep()" color="primary">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header *ngIf="!steps || steps.length === 0">
+      <ion-card-subtitle>Il n'y a pas encore d'unité</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content *ngIf="steps && steps.length !== 0">
+      <ion-list>
+        <ion-item *ngFor="let step of steps">
+          <ion-label>{{step.name}}</ion-label>
+          <ion-buttons slot="end">
+            <ion-button fill="clear" color="primary" (click)="editStep(step)">
+              <ion-icon slot="icon-only" name="create"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" color="primary" (click)="deleteStepPresentAlert(step)">
+              <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
