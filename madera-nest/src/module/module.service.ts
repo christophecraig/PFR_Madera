@@ -23,4 +23,11 @@ export class ModuleService {
         module = this.moduleRepository.merge(module, data);
         return this.moduleRepository.save(module);
     }
+
+    async deleteOne(id: number): Promise<void> {
+        const module = await this.moduleRepository.findOne(id);
+        await this.moduleRepository.remove(module);
+        return;
+    }
+
 }

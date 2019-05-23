@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Body } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Delete } from '@nestjs/common';
 import { ModuleService } from './module.service';
 import { Module } from '@entities/module.entity';
 import { ApiUseTags } from '@nestjs/swagger';
@@ -23,5 +23,10 @@ export class ModuleController {
     @Post()
     upsertOne(@Body() data: Module): Promise<Module> {
         return this.moduleService.upsertOne(data);
+    }
+
+    @Delete(':id')
+    deleteOne(@Param('id') id: number): Promise<void> {
+        return this.moduleService.deleteOne(id);
     }
 }
