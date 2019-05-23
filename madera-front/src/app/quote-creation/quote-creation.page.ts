@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides, IonContent, AlertController, NavParams } from '@ionic/angular';
+import { IonSlides, IonContent, AlertController, NavParams, ModalController } from '@ionic/angular';
 import { environment } from '../../environments/environment';
 
 import { Quote } from '@entities/quote.entity';
@@ -54,8 +54,13 @@ export class QuoteCreationPage implements OnInit {
 
   constructor(
     private alertController: AlertController,
+    private modalController: ModalController,
     private navParams: NavParams,
   ) { }
+
+  dismiss() {
+    this.modalController.dismiss();
+  }
 
   ngOnInit() {
     this.isEdit = false;
@@ -65,6 +70,14 @@ export class QuoteCreationPage implements OnInit {
         this.quote[key] = this.navParams.data[key];
       });
       this.isEdit = true;
+    }
+    if (this.quote && this.quote.range) {
+      fetch(`//${environment.db.host}:${environment.db.port}/range/${this.quote.range.id}`).then(response => {
+        response.json().then(data => {
+          console.log(data);
+          this.modules = data.modules;
+        });
+      });
     }
   }
 

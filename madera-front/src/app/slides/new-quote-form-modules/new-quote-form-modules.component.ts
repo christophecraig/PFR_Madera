@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Quote } from '../../models/Quote';
-import { Module } from '../../models/Module';
-import data from '../../db/data';
+import { Quote } from '@entities/quote.entity';
+import { Module } from '@entities/module.entity';
 
 @Component({
   selector: 'new-quote-form-modules',

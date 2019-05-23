@@ -1,8 +1,17 @@
-<ion-card *ngIf="quote && quote.name && quote.reference">
+<ion-card *ngIf="quote && quote.name && quote.ref">
   <ion-card-header>
     <ion-card-title>Résumé</ion-card-title>
-    <ion-card-subtitle>{{quote.name}} - {{quote.reference}}</ion-card-subtitle>
+    <ion-card-subtitle>{{quote.name}} - {{quote.ref}}</ion-card-subtitle>
   </ion-card-header>
+  <ion-card-content>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Tarif</ion-card-subtitle>
+        <ion-card-title>Coût total : {{getCost()}}€</ion-card-title>
+        <ion-card-title>Coût à régler : {{getCostNow()}}€</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </ion-card-content>
   <ion-card-content>
     <ion-card *ngIf="quote.date">
       <ion-card-header>
@@ -179,6 +188,7 @@
     </ion-card>
     <ion-item lines="none">
       <ion-button slot="start" type="button" fill="clear" (click)="changeSlide.emit(false)">RETOUR</ion-button>
+      <ion-button slot="end" type="button" fill="clear" (click)="save()">SAUVEGARDER</ion-button>
     </ion-item>
   </ion-card-content>
 </ion-card>

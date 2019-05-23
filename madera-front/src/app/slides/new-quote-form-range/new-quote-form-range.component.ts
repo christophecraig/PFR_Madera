@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
-import { Quote } from '../../models/Quote';
-import { Range } from '../../models/Range';
-import { Model } from '../../models/Model';
 import { environment } from '../../../environments/environment';
+import { Quote } from '@entities/quote.entity';
+import { Range } from '@entities/range.entity';
+import { Model } from '@entities/model.entity';
 
 @Component({
   selector: 'new-quote-form-range',
@@ -21,27 +21,6 @@ export class NewQuoteFormRangeComponent implements OnInit {
 
   selectedModel: Model;
 
-  getRangeFromId(id: number): Range {
-    let r: Range;
-    this.ranges.forEach(range => {
-      if (range.id === id) {
-        r = range;
-        this.rangeChanged.emit(r);
-      }
-    });
-    return r || null;
-  }
-
-  getModelFromId(id: number): Model {
-    let m: Model;
-    this.quote.range.models.forEach(model => {
-      if (model.id === id) {
-        m = model;
-      }
-    });
-    return m || null;
-  }
-
   constructor() { }
 
   ngOnInit() {
@@ -53,8 +32,13 @@ export class NewQuoteFormRangeComponent implements OnInit {
     });
   }
 
+  compareWith = (o1, o2) => {
+    return o1 && o2 ? o1.id === o2.id : o1 === o2;
+  }
+
   onRangeSelect(event) {
-    this.quote.range = this.getRangeFromId(parseInt(event.target.value, 10));
+    this.quote.range = event.target.value;
+    this.rangeChanged.emit(this.quote.range);
     let ok = false;
     if (this.quote.range.models) {
       this.quote.range.models.forEach(model => {
@@ -71,8 +55,8 @@ export class NewQuoteFormRangeComponent implements OnInit {
 
   onModelSelect(event) {
     console.debug(event);
-    if (parseInt(event.target.value, 10)) {
-      this.selectedModel = this.getModelFromId(parseInt(event.target.value, 10));
+    if (event.target.value) {
+      this.selectedModel = event.target.value;
       console.debug(this.selectedModel);
       this.quote.modules = this.selectedModel.modules;
     } else {

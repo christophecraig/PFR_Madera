@@ -57,7 +57,7 @@ export class RangeModalPage implements OnInit {
     });
   }
 
-  async editModels() {
+  async editModules() {
     const modal = await this.modalController.create({
       component: RangeModuleModalPage,
       componentProps: this.range,

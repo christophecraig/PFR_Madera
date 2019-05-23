@@ -24,6 +24,8 @@ import { SpecificationModule } from './specification/specification.module';
 import { TechnicalClauseModule } from './technical-clause/technical-clause.module';
 import { UnitModule } from './unit/unit.module';
 import { StepModule } from './step/step.module';
+import { AuthModule } from './auth/auth.module';
+import { JwtStrategy } from './auth/jwtStrategy';
 
 @Module({
   imports: [
@@ -49,6 +51,7 @@ import { StepModule } from './step/step.module';
     UnitModule,
     UserModule,
     WoodFrameModule,
+    AuthModule,
   ],
   controllers: [
     AppController,

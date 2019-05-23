@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>CONNEXION</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button color="primary" (click)="login()">
+        <ion-label>SE CONNECTER</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>CONNEXION</ion-card-title>
+      <ion-card-subtitle>* champs requis</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <form #loginForm="ngForm">
+        <ion-list>
+          <ion-item lines="inset">
+            <ion-label position="floating" color="primary">Email*</ion-label>
+            <ion-input type="email" inputmode="email" name="email" required></ion-input>
+          </ion-item>
+          <ion-item lines="inset">
+            <ion-label position="floating" color="primary">Mot de passe*</ion-label>
+            <ion-input type="password" inputmode="password" name="password" required></ion-input>
+          </ion-item>
+        </ion-list>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

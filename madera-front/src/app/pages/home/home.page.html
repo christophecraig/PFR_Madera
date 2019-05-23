@@ -1,16 +1,22 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>home</ion-title>
+  <ion-toolbar color="secondary">
+    <ion-title>Accueil</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <ion-list>
-    <ion-item button=true detail routerLink="/devis" lines="full">
+    <ion-item button=true detail routerLink="/devis" lines="full" *ngIf="isLoggedIn">
       <ion-label>Devis</ion-label>
     </ion-item>
-    <ion-item button=true detail routerLink="/configuration" lines="full">
+    <ion-item button=true detail routerLink="/configuration" lines="full" *ngIf="isLoggedIn">
       <ion-label>Configuration</ion-label>
+    </ion-item>
+    <ion-item button=true detail (click)="logout()" lines="full" *ngIf="isLoggedIn">
+      <ion-label>Deconnexion</ion-label>
+    </ion-item>
+    <ion-item button=true detail routerLink="/connexion" lines="full" *ngIf="!isLoggedIn">
+      <ion-label>Connexion</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>
