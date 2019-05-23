@@ -12,7 +12,7 @@ export class RangeService {
 
     async findAll(): Promise<Range[]> {
         return this.rangeRepository.find({
-            relations: ['models'],
+            relations: ['models', 'modules'],
         });
     }
 

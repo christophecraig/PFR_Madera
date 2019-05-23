@@ -19,8 +19,6 @@ export class Module {
     name: string;
 
     @ManyToMany(() => Quote)
-    @JoinTable()
-    @ApiModelPropertyOptional()
     quotes: Quote[];
 
     @ManyToOne(() => Cut, cut => cut.modules, {
@@ -42,7 +40,6 @@ export class Module {
     unit: Unit;
 
     @ManyToMany(() => Model)
-    @JoinTable()
     @ApiModelPropertyOptional()
     models: Model[];
 
@@ -54,7 +51,6 @@ export class Module {
     components: Component[];
 
     @ManyToMany(() => Range)
-    @JoinTable()
     @ApiModelPropertyOptional()
     ranges: Range[];
 

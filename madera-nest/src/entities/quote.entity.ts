@@ -30,6 +30,7 @@ export class Quote {
 
     @ManyToOne(() => State, state => state.quotes, {
         eager: true,
+        nullable: true,
     })
     @ApiModelProperty()
     state: State;
@@ -48,11 +49,11 @@ export class Quote {
 
     @ManyToMany(() => Module, {
         eager: true,
-        nullable: true,
+        // nullable: true,
     })
     @JoinTable()
     @ApiModelPropertyOptional()
-    modules?: Module[];
+    modules: Module[];
 
     @ManyToOne(() => Range, range => range.quotes, {
         eager: true,
@@ -64,7 +65,6 @@ export class Quote {
     @ManyToOne(() => Step, step => step.quotes, {
         eager: true,
     })
-    @ApiModelProperty()
     step: Step;
 
 }

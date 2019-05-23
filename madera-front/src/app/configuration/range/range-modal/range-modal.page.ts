@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController, NavParams } from '@ionic/angular';
 import { Range } from '@entities/range.entity';
 import { environment } from 'src/environments/environment';
+import { OverlayEventDetail } from '@ionic/core';
+import { RangeModuleModalPage } from './range-module-modal/range-module-modal.page';
 
 @Component({
   selector: 'app-range-modal',
@@ -13,9 +15,11 @@ export class RangeModalPage implements OnInit {
   range: Range;
   isEdit = false;
 
-  constructor(private alertController: AlertController,
+  constructor(
+    private alertController: AlertController,
     private navParams: NavParams,
-    private modalController: ModalController, ) { }
+    private modalController: ModalController,
+  ) { }
 
   ngOnInit() {
     this.isEdit = false;
@@ -52,4 +56,18 @@ export class RangeModalPage implements OnInit {
       });
     });
   }
+
+  async editModels() {
+    const modal = await this.modalController.create({
+      component: RangeModuleModalPage,
+      componentProps: this.range,
+    });
+    modal.onDidDismiss().then((response: OverlayEventDetail<Range>) => {
+      if (response.data) {
+        this.range = response.data;
+      }
+    });
+    return await modal.present();
+  }
+
 }

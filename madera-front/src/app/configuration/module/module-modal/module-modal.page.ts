@@ -81,7 +81,7 @@ export class ModuleModalPage implements OnInit {
       });
     });
   }
-  
+
   async editComponents() {
     const modal = await this.modalController.create({
       component: ModuleComponentModalPage,

@@ -10,7 +10,7 @@
         <ng-template #showSelectedModules>
           <ng-container *ngIf="modules">
             <ng-container *ngFor="let module of modules">
-              <ion-card *ngIf="quote.modules.includes(module)" (click)="removeModule(module.id)">
+              <ion-card *ngIf="checkModule(module)" (click)="removeModule(module.id)">
                 <ion-card-header>
                   <ion-card-title>{{module.name}}</ion-card-title>
                 </ion-card-header>
@@ -25,7 +25,7 @@
         <ng-template #showUnselectedModules>
           <ng-container *ngIf="modules">
             <ng-container *ngFor="let module of modules">
-              <ion-card *ngIf="!quote.modules.includes(module)" (click)="addModule(module.id)">
+              <ion-card *ngIf="!checkModule(module)" (click)="addModule(module.id)">
                 <ion-card-header>
                   <ion-card-title>{{module.name}}</ion-card-title>
                 </ion-card-header>

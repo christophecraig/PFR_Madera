@@ -70,13 +70,16 @@ export class NewQuoteFormRangeComponent implements OnInit {
   }
 
   onModelSelect(event) {
+    console.debug(event);
     if (parseInt(event.target.value, 10)) {
       this.selectedModel = this.getModelFromId(parseInt(event.target.value, 10));
+      console.debug(this.selectedModel);
       this.quote.modules = this.selectedModel.modules;
     } else {
       this.selectedModel = null;
       this.quote.modules = [];
     }
+    console.debug(this.quote);
   }
 
   onSubmit(event) {

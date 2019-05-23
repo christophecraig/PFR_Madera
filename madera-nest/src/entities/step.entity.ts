@@ -14,9 +14,8 @@ export class Step {
 
     @Column()
     @ApiModelProperty()
-    completion: number
+    completion: number;
 
     @OneToMany(() => Quote, quote => quote.step)
-    @ApiModelPropertyOptional()
     quotes: Quote[];
 }

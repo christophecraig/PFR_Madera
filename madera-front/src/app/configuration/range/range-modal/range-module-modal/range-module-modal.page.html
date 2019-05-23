@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>Modules</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button color="primary" (click)="updateModules()">
+        <ion-label>CONFIRMER</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="modules">
+    <ion-card-content>
+      <ion-list>
+
+        <ion-item *ngFor="let module of modules">
+          <ion-checkbox slot="start" [value]="module" (ionChange)="updateModule($event)" [checked]="isChecked(module) ">
+          </ion-checkbox>
+          <ion-label>{{module.name}}</ion-label>
+        </ion-item>
+
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

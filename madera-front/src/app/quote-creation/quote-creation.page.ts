@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides, IonContent } from '@ionic/angular';
+import { IonSlides, IonContent, AlertController, NavParams } from '@ionic/angular';
 import { environment } from '../../environments/environment';
 
 import { Quote } from '@entities/quote.entity';
@@ -15,7 +15,7 @@ export class QuoteCreationPage implements OnInit {
 
   @ViewChild(IonContent) content: IonContent;
 
-  quote: Quote = new Quote();
+  quote: Quote;
 
   modules: Module[];
 
@@ -24,6 +24,8 @@ export class QuoteCreationPage implements OnInit {
   sliderOptions = {
     touchRatio: 0
   };
+
+  isEdit: boolean;
 
   @ViewChild(IonSlides) slides: IonSlides;
 
@@ -50,10 +52,20 @@ export class QuoteCreationPage implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor(
+    private alertController: AlertController,
+    private navParams: NavParams,
+  ) { }
 
   ngOnInit() {
-
+    this.isEdit = false;
+    this.quote = new Quote();
+    if (this.navParams.data && this.navParams.data.id) {
+      Object.keys(this.navParams.data).forEach(key => {
+        this.quote[key] = this.navParams.data[key];
+      });
+      this.isEdit = true;
+    }
   }
 
 }

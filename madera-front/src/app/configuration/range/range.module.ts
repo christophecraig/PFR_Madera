@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { RangePage } from './range.page';
 import { RangeModalPageModule } from './range-modal/range-modal.module';
 import { RangeModalPage } from './range-modal/range-modal.page';
+import { RangeModuleModalPage } from './range-modal/range-module-modal/range-module-modal.page';
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     RangeModalPageModule,
   ],
-  entryComponents: [RangeModalPage],
+  entryComponents: [RangeModalPage, RangeModuleModalPage],
   declarations: [RangePage]
 })
 export class RangePageModule { }

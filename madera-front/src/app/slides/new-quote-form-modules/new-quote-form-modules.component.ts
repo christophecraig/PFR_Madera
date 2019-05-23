@@ -34,6 +34,16 @@ export class NewQuoteFormModulesComponent implements OnInit {
     this.changeSlide.emit(true);
   }
 
+  checkModule(module: Module): boolean {
+    let r = false;
+    this.quote.modules.forEach(quoteModule => {
+      if (quoteModule.id === module.id) {
+        r = true;
+      }
+    });
+    return r;
+  }
+
   removeModule(idModule: number) {
     this.quote.modules = this.quote.modules.filter(e => {
       return e.id !== idModule;
@@ -42,6 +52,7 @@ export class NewQuoteFormModulesComponent implements OnInit {
 
   addModule(idModule: number) {
     this.quote.modules.push(this.getModuleFromId(idModule));
+    console.debug(this.quote.modules);
   }
 
 }
